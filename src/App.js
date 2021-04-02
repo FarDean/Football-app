@@ -1,20 +1,30 @@
 import { useState, useEffect } from "react";
+import { selectAllUsers, fetchUsers } from "./redux/slice";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
-	const [shit, setShit] = useState(null);
+	const dispatch = useDispatch();
+	const users = useSelector(selectAllUsers);
+
+	const shit = useSelector(state => state.users);
+
+	const usersStatus = useSelector(state => state.status);
 
 	useEffect(() => {
-		async function getShit() {
-			const res = await fetch("/api/users");
-			const data = await res.json();
-			setShit(data);
+		if (usersStatus === "idle") {
+			dispatch(fetchUsers());
 		}
-		getShit();
-	}, []);
+	}, [dispatch, usersStatus]);
 
 	console.log(shit);
 
-	return <div>hi</div>;
+	return (
+		<div>
+			{shit.map(user => (
+				<h1 key={user.id}>{user.name}</h1>
+			))}
+		</div>
+	);
 }
 
 export default App;
