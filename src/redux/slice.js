@@ -22,7 +22,7 @@ export const userSlice = createSlice({
 		[fetchUsers.fulfilled]: (state, action) => {
 			state.status = "succeeded";
 			// Add any fetched posts to the array
-			state.users = state.users.concat(action.payload);
+			state.users = action.payload;
 		},
 		[fetchUsers.rejected]: (state, action) => {
 			state.status = "failed";

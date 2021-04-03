@@ -19,6 +19,11 @@ export function makeServer({ environment = "test" } = {}) {
 			this.get("/users", schema => {
 				return schema.users.all();
 			});
+			this.post("/users", (schema, request) => {
+				let attrs = JSON.parse(request.requestBody);
+				server.create("user", attrs);
+				return schema.users.all();
+			});
 		},
 	});
 

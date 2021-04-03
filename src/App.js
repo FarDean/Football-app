@@ -6,7 +6,12 @@ function App() {
 	const dispatch = useDispatch();
 	const users = useSelector(selectAllUsers);
 
-	const shit = useSelector(state => state.users);
+	const [user, setUser] = useState({
+		id: 4,
+		name: "",
+	});
+
+	// const shit = useSelector(state => state.users);
 
 	const usersStatus = useSelector(state => state.status);
 
@@ -16,13 +21,23 @@ function App() {
 		}
 	}, [dispatch, usersStatus]);
 
-	console.log(shit);
+	console.log(users);
+
+	async function postRequest() {
+		const res = await fetch("/api/users", {
+			method: "POST",
+			body: JSON.stringify(user),
+		});
+		return res.json();
+	}
 
 	return (
 		<div>
-			{shit.map(user => (
+			{users.map(user => (
 				<h1 key={user.id}>{user.name}</h1>
 			))}
+			<input type="text" onChange={e => setUser({ ...user, name: e.target.value })} />
+			<button onClick={postRequest}>Submit</button>
 		</div>
 	);
 }
