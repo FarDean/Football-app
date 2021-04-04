@@ -7,7 +7,7 @@ function App() {
 	useEffect(() => {
 		async function getTeams() {
 			const res = await fetch(
-				"https://v3.football.api-sports.io/leagues?season=2020&country=germany",
+				"https://v3.football.api-sports.io/teams?league=39&season=2020",
 				{
 					method: "GET",
 					headers: {
@@ -22,18 +22,10 @@ function App() {
 		getTeams();
 	}, []);
 
-	// console.log(teams);
+	console.log(teams);
 	return (
 		<>
 			<Link to="/leagues">leagues</Link>
-			{teams.map(team => (
-				<div>
-					<h1>
-						{team.league.name} <span>{team.league.id}</span>
-					</h1>
-					<img src={team.league.logo} alt="" />
-				</div>
-			))}
 		</>
 	);
 }
