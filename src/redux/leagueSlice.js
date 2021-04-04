@@ -37,7 +37,7 @@ export const leagueSlice = createSlice({
 			state.leagues.push(laLiga);
 			state.leagues.push(bundesLiga);
 		},
-		[fetchLeagues.arguments]: (state, action) => {
+		[fetchLeagues.rejected]: (state, action) => {
 			state.status = "failed";
 			state.error = action.error.message;
 		},

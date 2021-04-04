@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { config } from "./config";
+import { Link } from "react-router-dom";
 
 function App() {
 	const [teams, setTeams] = useState([]);
@@ -21,9 +22,10 @@ function App() {
 		getTeams();
 	}, []);
 
-	console.log(teams);
+	// console.log(teams);
 	return (
 		<>
+			<Link to="/leagues">leagues</Link>
 			{teams.map(team => (
 				<div>
 					<h1>
