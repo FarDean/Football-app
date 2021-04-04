@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./slice";
+import leagueReducer from "./leagueSlice";
 
 export default configureStore({
-	reducer: userReducer,
+	reducer: {
+		league: leagueReducer,
+	},
 });
