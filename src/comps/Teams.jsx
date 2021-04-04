@@ -2,6 +2,7 @@ import { useQuery } from "./../hooks/useQuery";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTeams } from "./../redux/teamSlice";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const Teams = () => {
 	const query = useQuery().get("league");
@@ -14,15 +15,19 @@ export const Teams = () => {
 			dispatch(fetchTeams(query));
 		}
 	}, [dispatch, teamStatus, query]);
+
 	console.log(teams);
+
 	if (teamStatus === "loading") return <h1>...loading</h1>;
 	return (
 		<>
 			{teams.map(team => (
-				<div key={team.team.id}>
-					<h2>{team.team.name}</h2>
-					<img src={team.team.logo} alt="" />
-				</div>
+				<Link to="/stats">
+					<div key={team.team.id}>
+						<h2>{team.team.name}</h2>
+						<img src={team.team.logo} alt="" />
+					</div>
+				</Link>
 			))}
 		</>
 	);

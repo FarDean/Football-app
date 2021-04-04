@@ -7,7 +7,7 @@ function App() {
 	useEffect(() => {
 		async function getTeams() {
 			const res = await fetch(
-				"https://v3.football.api-sports.io/teams?league=39&season=2020",
+				"https://v3.football.api-sports.io/teams/statistics?league=39&team=33&season=2020",
 				{
 					method: "GET",
 					headers: {
