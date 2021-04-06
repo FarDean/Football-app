@@ -1,17 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "./../config";
 // Thunk
-export const fetchLeagues = createAsyncThunk("leagues/fetchLeagues", async () => {
-	const res = await fetch("https://v3.football.api-sports.io/leagues?season=2020", {
-		method: "GET",
-		headers: {
-			"x-rapidapi-host": config.host,
-			"x-rapidapi-key": config.key,
-		},
-	});
-	const data = await res.json();
-	return data.response;
-});
+export const fetchLeagues = createAsyncThunk(
+	"leagues/fetchLeagues",
+	async (season = config.defaultSeason) => {
+		const res = await fetch(`https://v3.football.api-sports.io/leagues?season=${season}`, {
+			method: "GET",
+			headers: {
+				"x-rapidapi-host": config.host,
+				"x-rapidapi-key": config.key,
+			},
+		});
+		const data = await res.json();
+		return data.response;
+	}
+);
 
 // slice
 export const leagueSlice = createSlice({

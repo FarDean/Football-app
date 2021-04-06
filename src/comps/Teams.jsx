@@ -5,16 +5,16 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export const Teams = () => {
-	const query = useQuery().get("league");
+	const leagueId = useQuery().get("league");
 	const dispatch = useDispatch();
 	const teams = useSelector(state => state.team.teams);
 	const teamStatus = useSelector(state => state.team.status);
 
 	useEffect(() => {
 		if (teamStatus === "idle") {
-			dispatch(fetchTeams(query));
+			dispatch(fetchTeams(leagueId));
 		}
-	}, [dispatch, teamStatus, query]);
+	}, [dispatch, teamStatus, leagueId]);
 
 	console.log(teams);
 
