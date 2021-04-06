@@ -8,6 +8,7 @@ export const Leagues = () => {
 
 	const leagues = useSelector(state => state.league.leagues);
 	const leaguesStatus = useSelector(state => state.league.status);
+	const error = useSelector(state => state.league.error);
 
 	useEffect(() => {
 		if (leaguesStatus === "idle") {
@@ -19,6 +20,7 @@ export const Leagues = () => {
 	if (leaguesStatus === "loading") return <h1>...loading</h1>;
 	return (
 		<>
+			{error && <h1>{error}</h1>}
 			{leagues.map(league => (
 				<Link to={`/teams?league=${league.league.id}`}>
 					<div style={{ display: "flex" }}>
