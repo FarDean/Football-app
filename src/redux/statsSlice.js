@@ -2,10 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "./../config";
 
 // Thunk
-export const fetchStats = createAsyncThunk("stats/fetchStats", async (leagueId, teamId, season) => {
+export const fetchStats = createAsyncThunk("stats/fetchStats", async ({ leagueId, teamId }) => {
 	const res = await fetch(
-		`https://v3.football.api-sports.io/teams/statistics?league=${leagueId}&team=${teamId}&season=${season}`,
+		`https://v3.football.api-sports.io/teams/statistics?league=${leagueId}&team=${teamId}&season=${config.defaultSeason}`,
 		{
+			method: "GET",
 			headers: {
 				"x-rapidapi-host": config.host,
 				"x-rapidapi-key": config.key,
@@ -30,7 +31,7 @@ export const statsSlice = createSlice({
 		},
 		[fetchStats.fulfilled]: (state, action) => {
 			state.status = "succeeded";
-			state.stats = action.payload;
+			state.stats = { ...action.payload };
 		},
 		[fetchStats.rejected]: (state, action) => {
 			state.status = "failed";

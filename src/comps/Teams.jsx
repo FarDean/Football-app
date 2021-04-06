@@ -12,19 +12,17 @@ export const Teams = () => {
 	const teamStatus = useSelector(state => state.team.status);
 	const error = useSelector(state => state.team.error);
 	useEffect(() => {
-		if (teamStatus === "idle") {
-			dispatch(fetchTeams(leagueId, 2020));
-		}
-	}, [dispatch, teamStatus, leagueId]);
+		dispatch(fetchTeams(leagueId));
+	}, [dispatch, leagueId]);
 
-	console.log(teams);
+	console.log(teamStatus);
 
 	if (teamStatus === "loading") return <h1>...loading</h1>;
 	return (
 		<>
 			{error && <h1>{error}</h1>}
 			{teams.map(team => (
-				<Link to={`/stats`}>
+				<Link to={`/stats?league=${leagueId}&team=${team.team.id}`}>
 					<div key={team.team.id}>
 						<h2>{team.team.name}</h2>
 						<img src={team.team.logo} alt="" />

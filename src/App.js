@@ -3,7 +3,7 @@ import { config } from "./config";
 import { Link } from "react-router-dom";
 
 function App() {
-	const [teams, setTeams] = useState([]);
+	const [teams, setTeams] = useState({});
 	useEffect(() => {
 		async function getTeams() {
 			const res = await fetch(
@@ -22,7 +22,6 @@ function App() {
 		getTeams();
 	}, []);
 
-	console.log(teams);
 	return (
 		<>
 			<Link to="/leagues">leagues</Link>
