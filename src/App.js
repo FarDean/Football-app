@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { config } from "./config";
 import { Link } from "react-router-dom";
 import { Menu, Segment, Container } from "semantic-ui-react";
-
 import { LiveScores } from "./comps/LiveScores";
+
 function App() {
 	// const [teams, setTeams] = useState({});
 	// useEffect(() => {

@@ -13,7 +13,7 @@ export const LiveScores = () => {
 		}
 	}, [dispatch, liveScoreStatus]);
 
-	console.log(liveScores);
+	console.log("live", liveScores);
 
 	return <h1>LiveScores</h1>;
 };

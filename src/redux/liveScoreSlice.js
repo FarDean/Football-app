@@ -10,7 +10,7 @@ export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", as
 		},
 	});
 	const data = await res.json();
-	return data.resoponse;
+	return data.response;
 });
 
 // slice
