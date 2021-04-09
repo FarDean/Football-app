@@ -27,33 +27,7 @@ function App() {
 
 	const [activeItem, setActiveItem] = useState("home");
 
-	return (
-		<Container>
-			<Menu pointing secondary>
-				<Link to="/">
-					<Menu.Item
-						name="home"
-						active={activeItem === "home"}
-						onClick={() => setActiveItem("home")}
-					/>
-				</Link>
-				<Menu.Item
-					name="Leagues"
-					active={activeItem === "Leagues"}
-					onClick={() => setActiveItem("Leagues")}
-				/>
-
-				<Menu.Menu position="right">
-					<Menu.Item
-						name="logout"
-						active={activeItem === "logout"}
-						onClick={() => setActiveItem("")}
-					/>
-				</Menu.Menu>
-			</Menu>
-			<LiveScores />
-		</Container>
-	);
+	return <LiveScores />;
 }
 
 export default App;

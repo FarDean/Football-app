@@ -4,27 +4,30 @@ import { Leagues } from "./comps/Leagues";
 import { Statnding } from "./comps/Standing";
 import { Stats } from "./comps/Stats";
 import { Teams } from "./comps/Teams";
+import { Wrapper } from "./comps/Wrapper";
 
 export const MainRouter = () => {
 	return (
 		<Router>
-			<Switch>
-				<Route exact path="/">
-					<App />
-				</Route>
-				<Route exact path="/leagues">
-					<Leagues />
-				</Route>
-				<Route exact path="/teams">
-					<Teams />
-				</Route>
-				<Route exact path="/stats">
-					<Stats />
-				</Route>
-				<Route exact path="/standing">
-					<Statnding />
-				</Route>
-			</Switch>
+			<Wrapper>
+				<Switch>
+					<Route exact path="/">
+						<App />
+					</Route>
+					<Route exact path="/leagues">
+						<Leagues />
+					</Route>
+					<Route exact path="/teams">
+						<Teams />
+					</Route>
+					<Route exact path="/stats">
+						<Stats />
+					</Route>
+					<Route exact path="/standing">
+						<Statnding />
+					</Route>
+				</Switch>
+			</Wrapper>
 		</Router>
 	);
 };
