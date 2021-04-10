@@ -9,25 +9,27 @@ import { Wrapper } from "./comps/Wrapper";
 export const MainRouter = () => {
 	return (
 		<Router>
-			<Wrapper>
-				<Switch>
-					<Route exact path="/">
-						<App />
-					</Route>
-					<Route exact path="/leagues">
-						<Leagues />
-					</Route>
-					<Route exact path="/teams">
-						<Teams />
-					</Route>
-					<Route exact path="/stats">
-						<Stats />
-					</Route>
-					<Route exact path="/standing">
-						<Statnding />
-					</Route>
-				</Switch>
-			</Wrapper>
+			<Route exact path="/teams">
+				<Teams />
+			</Route>
+			<Route exact path="/stats">
+				<Stats />
+			</Route>
+			<Route exact path="/standing">
+				<Statnding />
+			</Route>
+			<Route exact path="/">
+				<Wrapper>
+					<Switch>
+						<Route exact path="/">
+							<App />
+						</Route>
+						<Route path="/leagues">
+							<Leagues />
+						</Route>
+					</Switch>
+				</Wrapper>
+			</Route>
 		</Router>
 	);
 };

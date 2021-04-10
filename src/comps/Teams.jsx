@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchTeams } from "./../redux/teamSlice";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Loader, Dimmer, Image } from "semantic-ui-react";
 
 export const Teams = () => {
 	const leagueId = useQuery().get("league");
@@ -15,9 +16,14 @@ export const Teams = () => {
 		dispatch(fetchTeams(leagueId));
 	}, [dispatch, leagueId]);
 
-	console.log(teamStatus);
+	console.log(teams);
 
-	if (teamStatus === "loading") return <h1>...loading</h1>;
+	if (teamStatus === "loading")
+		return (
+			<Dimmer active inverted>
+				<Loader inverted content="Loading" />
+			</Dimmer>
+		);
 	return (
 		<>
 			{error && <h1>{error}</h1>}

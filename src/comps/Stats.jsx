@@ -21,18 +21,20 @@ export const Stats = () => {
 
 	console.log(stats);
 	if (statsStatus === "loading") return <h1>...loading</h1>;
-	return (
-		<>
-			{error && <h1>{error}</h1>}
-			<h1>stats</h1>
-			<ul>
-				<li>
-					biggest Defeat: <span>{stats.biggest.loses.away}</span>
-				</li>
-				<li>
-					cards : <span>{stats.cards.red["76-90"].total}</span>
-				</li>
-			</ul>
-		</>
-	);
+	if (statsStatus === "succeeded")
+		return (
+			<>
+				{error && <h1>{error}</h1>}
+				<h1>stats</h1>
+				<ul>
+					<li>
+						biggest Defeat: <span>{stats.biggest.loses.away}</span>
+					</li>
+					<li>
+						cards : <span>{stats.cards.red["76-90"].total}</span>
+					</li>
+				</ul>
+			</>
+		);
+	return null;
 };

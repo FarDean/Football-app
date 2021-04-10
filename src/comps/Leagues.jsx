@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { fetchLeagues } from "./../redux/leagueSlice";
 import { Link } from "react-router-dom";
 import { Container } from "semantic-ui-react";
-import { Image, Item } from "semantic-ui-react";
+import { Image, Item, Dimmer, Loader } from "semantic-ui-react";
 
 export const Leagues = () => {
 	const dispatch = useDispatch();
@@ -19,17 +19,16 @@ export const Leagues = () => {
 	}, [dispatch, leaguesStatus]);
 
 	console.log(leagues);
-	if (leaguesStatus === "loading") return <h1>...loading</h1>;
+	if (leaguesStatus === "loading")
+		return (
+			<Dimmer active inverted>
+				<Loader inverted content="Loading" />
+			</Dimmer>
+		);
 	return (
 		<Container>
 			{error && <h1>{error}</h1>}
-			{/* {leagues.map(league => (
-				<Link to={`/teams?league=${league.league.id}`}>
-					<div style={{ display: "flex" }}>
-						<img src={league.league.logo} alt="" />
-					</div>
-				</Link>
-			))} */}
+
 			<Item.Group>
 				{leagues.map(league => (
 					<Item key={league.league.id}>
