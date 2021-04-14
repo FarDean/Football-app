@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./../styles/Wrapper.module.css";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
+import { Container } from "./utils/Container";
 
 export const Wrapper = ({ children }) => {
 	const dispatch = useDispatch();
@@ -27,12 +28,27 @@ export const Wrapper = ({ children }) => {
 
 	if (leaguesStatus === "succeeded")
 		return (
-			<>
-				<Link to="/">Live Scores</Link>
-				<Link to="leagues">Leagues</Link>
+			<Container>
+				<header>
+					<nav className={styles.nav}>
+						<div className="left">
+							<Link to="/">Live Scores</Link>
+						</div>
+						<div className="center">Logo</div>
+						<div className="right">
+							<div>
+								{leagues.map((league, i) => (
+									<Link to="/" key={i}>
+										{league.league.name}
+									</Link>
+								))}
+							</div>
+						</div>
+					</nav>
+				</header>
 				<hr />
 				{children}
-			</>
+			</Container>
 		);
 
 	return <Error />;
