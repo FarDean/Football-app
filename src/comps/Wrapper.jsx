@@ -35,14 +35,21 @@ export const Wrapper = ({ children }) => {
 							<Link to="/">Live Scores</Link>
 						</div>
 						<div className="center">Logo</div>
-						<div className="right">
-							<div>
-								{leagues.map((league, i) => (
+						<div className={styles.right}>
+							{leagues.map((league, i) => (
+								<div className={styles.navItem}>
+									<div className={styles.img}>
+										<img
+											className={styles.leagueIcon}
+											src={league.league.logo}
+											alt=""
+										/>
+									</div>
 									<Link to="/" key={i}>
 										{league.league.name}
 									</Link>
-								))}
-							</div>
+								</div>
+							))}
 						</div>
 					</nav>
 				</header>
