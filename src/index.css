@@ -11,6 +11,15 @@ body {
 a {
 	text-decoration: none;
 	color: orangered;
+	transition: color 0.5s ease;
+}
+
+a:hover {
+	color: rgb(80, 21, 0);
+}
+
+a:active {
+	color: rgb(131, 117, 45);
 }
 
 .flex {

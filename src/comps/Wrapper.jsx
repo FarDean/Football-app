@@ -31,13 +31,14 @@ export const Wrapper = ({ children }) => {
 			<Container>
 				<header>
 					<nav className={styles.nav}>
-						<div className="left">
+						<div className={styles.left}>
+							<div class={styles.pulse}></div>
 							<Link to="/">Live Scores</Link>
 						</div>
 						<div className="center">Logo</div>
 						<div className={styles.right}>
 							{leagues.map((league, i) => (
-								<div className={styles.navItem}>
+								<div key={i} className={styles.navItem}>
 									<div className={styles.img}>
 										<img
 											className={styles.leagueIcon}
@@ -45,9 +46,7 @@ export const Wrapper = ({ children }) => {
 											alt=""
 										/>
 									</div>
-									<Link to="/" key={i}>
-										{league.league.name}
-									</Link>
+									<Link to="/">{league.league.name}</Link>
 								</div>
 							))}
 						</div>
