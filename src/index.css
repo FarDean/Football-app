@@ -8,6 +8,10 @@ body {
 	margin: 0 auto;
 }
 
+a {
+	text-decoration: none;
+}
+
 .flex {
 	display: flex;
 	justify-content: center;
