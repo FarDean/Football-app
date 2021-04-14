@@ -16,5 +16,10 @@ export const LiveScores = () => {
 
 	console.log("live", liveScores);
 
-	return <Hero text="Live Scores" />;
+	return (
+		<>
+			<Hero text="Live Scores" />
+			<div>stuff</div>
+		</>
+	);
 };
