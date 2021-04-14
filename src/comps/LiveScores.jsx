@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLiveScores } from "./../redux/liveScoreSlice";
 import { useEffect } from "react";
+import { Hero } from "./utils/Hero";
 
 export const LiveScores = () => {
 	const dispatch = useDispatch();
@@ -15,5 +16,5 @@ export const LiveScores = () => {
 
 	console.log("live", liveScores);
 
-	return <h1>LiveScores</h1>;
+	return <Hero text="Live Scores" />;
 };
