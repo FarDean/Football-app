@@ -17,6 +17,11 @@
 	padding-left: 35px;
 }
 
+.center {
+	font-size: large;
+	text-transform: uppercase;
+}
+
 .right {
 	display: flex;
 }

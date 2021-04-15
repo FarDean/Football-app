@@ -19,7 +19,9 @@ export const LiveScores = () => {
 	return (
 		<>
 			<Hero text="Live Scores" />
-			<div>stuff</div>
+			<div>
+				{liveScores.length === 0 && <h1>There are no matches being played currently!</h1>}
+			</div>
 		</>
 	);
 };
