@@ -6,8 +6,9 @@ import styles from "./../styles/Wrapper.module.css";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
 import { Container } from "./utils/Container";
+import React from "react";
 
-export const Wrapper = ({ children }) => {
+export const Wrapper = React.memo(({ children }) => {
 	const dispatch = useDispatch();
 
 	const leagues = useSelector(state => state.league.leagues);
@@ -46,7 +47,9 @@ export const Wrapper = ({ children }) => {
 											alt=""
 										/>
 									</div>
-									<Link to="/">{league.league.name}</Link>
+									<Link to={`/leagues?leagueId=${league.league.id}`}>
+										{league.league.name}
+									</Link>
 								</div>
 							))}
 						</div>
@@ -58,4 +61,4 @@ export const Wrapper = ({ children }) => {
 		);
 
 	return <Error />;
-};
+});
