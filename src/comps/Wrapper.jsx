@@ -47,7 +47,7 @@ export const Wrapper = React.memo(({ children }) => {
 											alt=""
 										/>
 									</div>
-									<Link to={`/leagues?leagueId=${league.league.id}`}>
+									<Link to={`/leagues/standing?leagueId=${league.league.id}`}>
 										{league.league.name}
 									</Link>
 								</div>
