@@ -33,7 +33,7 @@ export const Wrapper = React.memo(({ children }) => {
 				<header>
 					<nav className={styles.nav}>
 						<div className={styles.left}>
-							<div class={styles.pulse}></div>
+							<div className={styles.pulse}></div>
 							<Link to="/">Live Scores</Link>
 						</div>
 						<div className="center">Logo</div>

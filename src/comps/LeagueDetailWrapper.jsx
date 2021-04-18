@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./../styles/LeagueWrapper.module.css";
 import { useRouteMatch } from "react-router-dom";
+import { LeagueDetailRouter } from "./LeagueDetailRouter";
 
 export const LeagueDetailWrapper = ({ children }) => {
 	const location = useLocation();
@@ -14,16 +15,16 @@ export const LeagueDetailWrapper = ({ children }) => {
 		<main>
 			<div className={styles.tabs}>
 				<div className={getClass("standing")}>
-					<Link>Standing</Link>
+					<Link to="/leagues/standing">Standing</Link>
 				</div>
 				<div className={getClass("fixtures")}>
-					<Link>Fixtures</Link>
+					<Link to="/leagues/fixtures">Fixtures</Link>
 				</div>
 				<div className={getClass("teams")}>
-					<Link>Teams</Link>
+					<Link to="/leagues/teams">Teams</Link>
 				</div>
 			</div>
-			{children}
+			<LeagueDetailRouter />
 		</main>
 	);
 };
