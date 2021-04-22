@@ -1,4 +1,3 @@
-import { Hero } from "./utils/Hero";
 import { useSelector } from "react-redux";
 import { useQuery } from "./../hooks/useQuery";
 import { LeagueDetailWrapper } from "./LeagueDetailWrapper";
@@ -10,8 +9,7 @@ export const League = () => {
 
 	return (
 		<>
-			<Hero icon={league.league.logo} text={league.league.name} />
-			<LeagueDetailWrapper>hello</LeagueDetailWrapper>
+			<LeagueDetailWrapper league={league}>hello</LeagueDetailWrapper>
 		</>
 	);
 };

@@ -13,7 +13,7 @@ export const MainRouter = () => {
 					<Route exact path="/">
 						<App />
 					</Route>
-					<Route exact path="/leagues/standing">
+					<Route exact path="/leagues">
 						<League />
 					</Route>
 				</Switch>
