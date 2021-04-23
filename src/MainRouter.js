@@ -8,16 +8,15 @@ import { Wrapper } from "./comps/Wrapper";
 export const MainRouter = () => {
 	return (
 		<Router>
-			<Wrapper>
-				<Switch>
-					<Route exact path="/">
-						<App />
-					</Route>
-					<Route exact path="/leagues">
-						<League />
-					</Route>
-				</Switch>
-			</Wrapper>
+			<Wrapper />
+			<Switch>
+				<Route path="/">
+					<App />
+				</Route>
+				<Route path="/leagues">
+					<League />
+				</Route>
+			</Switch>
 		</Router>
 	);
 };

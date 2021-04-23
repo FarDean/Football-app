@@ -8,7 +8,7 @@ import { Loader } from "./utils/Loader";
 import { Container } from "./utils/Container";
 import React from "react";
 
-export const Wrapper = React.memo(({ children }) => {
+export const Wrapper = React.memo(() => {
 	const dispatch = useDispatch();
 
 	const leagues = useSelector(state => state.league.leagues);
@@ -56,7 +56,6 @@ export const Wrapper = React.memo(({ children }) => {
 					</nav>
 				</header>
 				<hr />
-				{children}
 			</Container>
 		);
 
