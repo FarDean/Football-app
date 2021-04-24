@@ -30,7 +30,7 @@ export const Wrapper = React.memo(() => {
 
 	if (leaguesStatus === "succeeded")
 		return (
-			<Container>
+			<>
 				<header>
 					<nav className={styles.nav}>
 						<div className={styles.left}>
@@ -57,7 +57,7 @@ export const Wrapper = React.memo(() => {
 					</nav>
 				</header>
 				<hr />
-			</Container>
+			</>
 		);
 
 	return <Error />;
