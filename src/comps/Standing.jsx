@@ -1,4 +1,4 @@
-export const Statnding = ({ match }) => {
-	// console.log("match", match);
+export const Statnding = ({ kos }) => {
+	console.log(kos);
 	return <h1>standign</h1>;
 };

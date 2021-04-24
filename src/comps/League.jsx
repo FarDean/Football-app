@@ -39,7 +39,9 @@ export const League = ({ match }) => {
 						</div>
 					</div>
 					<Switch>
-						<Route path={`${path}/standing`} component={Statnding} />
+						<Route path={`${path}/standing`}>
+							<Statnding kos="kos" />
+						</Route>
 						<Route path={`${path}/fixtures`} component={Fixtures} />
 						<Route path={`${path}/teams`} component={Teams} />
 					</Switch>
