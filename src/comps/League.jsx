@@ -7,7 +7,7 @@ import { Fixtures } from "./Fixtures";
 import { Teams } from "./Teams";
 import { Error } from "./utils/Error";
 
-export const League = ({ match }) => {
+export const League = () => {
 	let { path, url } = useRouteMatch();
 	let { leagueName } = useParams();
 

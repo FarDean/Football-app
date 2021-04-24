@@ -1,9 +1,9 @@
-import { useQuery } from "./../hooks/useQuery";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchTeams } from "./../redux/teamSlice";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Loader, Dimmer, Image } from "semantic-ui-react";
+// import { useQuery } from "./../hooks/useQuery";
+// import { useSelector, useDispatch } from "react-redux";
+// import { fetchTeams } from "./../redux/teamSlice";
+// import { useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import { Loader, Dimmer, Image } from "semantic-ui-react";
 
 export const Teams = () => {
 	// const leagueId = useQuery().get("league");

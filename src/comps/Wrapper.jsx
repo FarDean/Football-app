@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./../styles/Wrapper.module.css";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
-import { Container } from "./utils/Container";
 import React from "react";
 import slugify from "slugify";
 

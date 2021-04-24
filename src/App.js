@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
-import { config } from "./config";
-import { Link } from "react-router-dom";
-import { Menu, Segment, Container } from "semantic-ui-react";
+import { useState } from "react";
+
 import { LiveScores } from "./comps/LiveScores";
 
 function App() {
@@ -24,8 +22,6 @@ function App() {
 	// 	getTeams();
 	// }, []);
 	// console.log(teams);
-
-	const [activeItem, setActiveItem] = useState("home");
 
 	return <LiveScores />;
 }
