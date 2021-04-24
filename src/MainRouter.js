@@ -13,7 +13,9 @@ export const MainRouter = () => {
 				<Route exact path="/">
 					<App />
 				</Route>
-				<Route path="/leagues" component={League} />
+				<Route path="/leagues/:leagueName">
+					<League />
+				</Route>
 			</Switch>
 		</Router>
 	);
