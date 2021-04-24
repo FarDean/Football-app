@@ -7,6 +7,7 @@ import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
 import { Container } from "./utils/Container";
 import React from "react";
+import slugify from "slugify";
 
 export const Wrapper = React.memo(() => {
 	const dispatch = useDispatch();
@@ -47,7 +48,7 @@ export const Wrapper = React.memo(() => {
 											alt=""
 										/>
 									</div>
-									<Link to={`/leagues?leagueId=${league.league.id}`}>
+									<Link to={`/leagues/${slugify(league.league.name)}/standing`}>
 										{league.league.name}
 									</Link>
 								</div>

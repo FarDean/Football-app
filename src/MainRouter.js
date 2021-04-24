@@ -10,12 +10,10 @@ export const MainRouter = () => {
 		<Router>
 			<Wrapper />
 			<Switch>
-				<Route path="/">
+				<Route exact path="/">
 					<App />
 				</Route>
-				<Route path="/leagues">
-					<League />
-				</Route>
+				<Route path="/leagues" component={League} />
 			</Switch>
 		</Router>
 	);
