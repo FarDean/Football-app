@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { LiveScores } from "./comps/LiveScores";
 
 function App() {
