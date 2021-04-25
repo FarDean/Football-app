@@ -16,10 +16,10 @@ export const League = () => {
 	);
 	const leaguesStatus = useSelector(state => state.league.status);
 
-	console.log(leaguesStatus);
-
 	const getClass = linkName => {
-		return path.includes(linkName) ? `${styles.tab} ${styles.active}` : `${styles.tab}`;
+		return window.location.href.includes(linkName)
+			? `${styles.tab} ${styles.active}`
+			: `${styles.tab}`;
 	};
 
 	if (leaguesStatus === "succeeded")
@@ -40,7 +40,7 @@ export const League = () => {
 					</div>
 					<Switch>
 						<Route path={`${path}/standing`}>
-							<Statnding kos="kos" />
+							<Statnding leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/fixtures`} component={Fixtures} />
 						<Route path={`${path}/teams`} component={Teams} />
