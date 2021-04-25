@@ -9,9 +9,21 @@ export const LiveScores = () => {
 	const liveScoreStatus = useSelector(state => state.livescore.status);
 
 	useEffect(() => {
+		let apiTimeout;
+
 		if (liveScoreStatus === "idle") {
 			dispatch(fetchLiveScores());
 		}
+
+		if (liveScoreStatus === "succeeded") {
+			apiTimeout = setTimeout(() => {
+				dispatch(fetchLiveScores());
+			}, 90000);
+		}
+
+		return () => {
+			clearTimeout(apiTimeout);
+		};
 	}, [dispatch, liveScoreStatus]);
 
 	console.log("live", liveScores);
@@ -31,6 +43,7 @@ export const LiveScores = () => {
 						}}
 						key={i}
 					>
+						{score.fixture.status.elapsed}
 						<div
 							style={{
 								display: "flex",
