@@ -13,6 +13,13 @@ a {
 	color: orangered;
 	transition: color 0.5s ease;
 }
+img {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 5px;
+	width: 150px;
+	display: block;
+}
 
 a:hover {
 	color: rgb(80, 21, 0);
