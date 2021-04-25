@@ -36,7 +36,12 @@ export const Wrapper = React.memo(() => {
 							<div className={styles.pulse}></div>
 							<Link to="/">Live Scores</Link>
 						</div>
-						<div className="center">Logo</div>
+						<div className={styles.center}>
+							<img
+								src="https://image.freepik.com/free-vector/king-football-logo_21010-8.jpg"
+								alt=""
+							/>
+						</div>
 						<div className={styles.right}>
 							{leagues.map((league, i) => (
 								<div key={i} className={styles.navItem}>

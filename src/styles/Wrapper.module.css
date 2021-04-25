@@ -17,9 +17,12 @@
 	padding-left: 35px;
 }
 
-.center {
-	font-size: large;
-	text-transform: uppercase;
+.center img {
+	height: 5vh;
+	width: 70px;
+	padding: 0;
+	border-radius: 0;
+	border: none;
 }
 
 .right {
