@@ -1,0 +1,53 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css);
+.table {
+	margin: 0 auto;
+	width: 80%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.head {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: rgb(75, 75, 75);
+	line-height: 2.2;
+}
+
+.tbrow {
+	line-height: 2;
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+
+.img {
+	width: 24px;
+	height: 24px;
+	border: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.span {
+	width: 24px;
+	display: flex;
+	justify-content: center;
+}
+
+.last5 {
+	display: flex;
+	justify-content: center;
+}
+
+.lose {
+	color: rgb(253, 48, 48);
+}
+
+.win {
+	color: green;
+}
+
+.draw {
+	color: grey;
+}
