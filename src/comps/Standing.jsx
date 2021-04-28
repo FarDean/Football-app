@@ -6,9 +6,9 @@ import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 
 const icons = {
-	W: <i class={`fas fa-check-circle`}></i>,
-	D: <i class="fas fa-minus-circle"></i>,
-	L: <i class="fas fa-times-circle"></i>,
+	W: <i class={`fas fa-check-circle ${styles.win}`}></i>,
+	D: <i class={`fas fa-minus-circle ${styles.draw}`}></i>,
+	L: <i class={`fas fa-times-circle ${styles.lose}`}></i>,
 };
 
 export const Statnding = ({ leagueId }) => {
@@ -58,7 +58,7 @@ export const Statnding = ({ leagueId }) => {
 							<td>{team.points}</td>
 							<td className={styles.last5}>
 								{[...team.form].map(str => (
-									<span>{icons[str]}</span>
+									<span className={styles.form}>{icons[str]}</span>
 								))}
 							</td>
 						</tr>
