@@ -5,6 +5,12 @@ import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 
+const icons = {
+	W: <i class={`fas fa-check-circle`}></i>,
+	D: <i class="fas fa-minus-circle"></i>,
+	L: <i class="fas fa-times-circle"></i>,
+};
+
 export const Statnding = ({ leagueId }) => {
 	const dispatch = useDispatch();
 	// selectors
@@ -50,7 +56,11 @@ export const Statnding = ({ leagueId }) => {
 							<td>{team.all.goals.against}</td>
 							<td>{team.goalsDiff}</td>
 							<td>{team.points}</td>
-							<td className={styles.last5}>{team.form}</td>
+							<td className={styles.last5}>
+								{[...team.form].map(str => (
+									<span>{icons[str]}</span>
+								))}
+							</td>
 						</tr>
 					))}
 				</tbody>
