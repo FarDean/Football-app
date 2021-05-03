@@ -25,7 +25,7 @@ export const Wrapper = React.memo(() => {
 
 	if (leaguesStatus === "loading") return <Loader />;
 
-	if (leaguesStatus === "failed") return <Error text={error} />;
+	if (leaguesStatus === "failed" || leagues[0] === undefined) return <Error />;
 
 	if (leaguesStatus === "succeeded")
 		return (

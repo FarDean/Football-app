@@ -3,6 +3,7 @@ import { fetchLiveScores } from "./../redux/liveScoreSlice";
 import { useEffect } from "react";
 import { Hero } from "./utils/Hero";
 import styles from "./../styles/LS.module.css";
+import { Error } from "./utils/Error";
 
 export const LiveScores = () => {
 	const dispatch = useDispatch();
@@ -28,6 +29,7 @@ export const LiveScores = () => {
 	}, [dispatch, liveScoreStatus]);
 
 	console.log("live", liveScores);
+	if (liveScoreStatus === "failed") return <Error />;
 
 	return (
 		<>
