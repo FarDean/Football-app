@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchLiveScores } from "./../redux/liveScoreSlice";
 import { useEffect } from "react";
 import { Hero } from "./utils/Hero";
+import styles from "./../styles/LS.module.css";
 
 export const LiveScores = () => {
 	const dispatch = useDispatch();
@@ -34,35 +35,43 @@ export const LiveScores = () => {
 			<div>
 				{liveScores.length === 0 && <h1>There are no matches being played currently!</h1>}
 				{liveScores.map((score, i) => (
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "space-around",
-							padding: "15px 0",
-							fontSize: "2rem",
-						}}
-						key={i}
-					>
-						{score.fixture.status.elapsed}
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-							}}
-						>
-							<img src={score.teams.home.logo} alt="" />
-							{score.teams.home.name} {score.goals.home}
+					<div className={styles.parent} key={i}>
+						<div className={styles.top}>
+							<div className={styles.leaguename}>{score.league.name}</div>
+
+							<div className={styles.elapsed}>
+								{score.fixture.status.long === "Halftime" ? (
+									<div>{score.fixture.status.long}</div>
+								) : (
+									<div>
+										{score.fixture.status.elapsed}
+										<span>`</span>
+									</div>
+								)}
+								<div className={styles.container}>
+									<div className={styles.loader}>
+										<span></span>
+										<span></span>
+										<span></span>
+										<span></span>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div
-							style={{
-								display: "flex",
-								justifyContent: "center",
-								alignItems: "center",
-							}}
-						>
-							<img src={score.teams.away.logo} alt="" />
-							{score.teams.away.name} {score.goals.away}
+						<div className={styles.teams}>
+							<div className={styles.teamdetail}>
+								<img className={styles.img} src={score.teams.home.logo} alt="" />
+								<div>{score.teams.home.name}</div>
+							</div>
+							<div className={styles.goals}>
+								<div className={styles.score}>{score.goals.home}</div>
+								<div>-</div>
+								<div className={styles.score}>{score.goals.away}</div>
+							</div>
+							<div className={styles.teamdetail}>
+								<img className={styles.img} src={score.teams.away.logo} alt="" />
+								<div>{score.teams.away.name}</div>
+							</div>
 						</div>
 					</div>
 				))}

@@ -1,0 +1,125 @@
+.parent {
+	width: 80%;
+	margin: 20px auto;
+	cursor: pointer;
+	border-radius: 16px;
+	padding: 10px;
+	border-bottom: 0.1px solid rgb(235, 235, 235);
+	transition: background-color 0.1s ease;
+}
+
+.parent:hover {
+	background-color: rgb(233, 233, 233);
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.teams {
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	margin: 0 auto;
+	padding: 5px;
+}
+
+.img {
+	width: 48px;
+	height: 48px;
+	display: block;
+	border: none;
+}
+
+.elapsed {
+	color: #5ecb96;
+}
+
+.teamdetail {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.3rem;
+}
+
+.goals {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 270px;
+	font-size: 4.1rem;
+}
+
+.leaguename {
+	color: grey;
+}
+
+.score {
+	width: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* loader */
+
+#container {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.loader {
+	height: 5px;
+	background: #5ecb96;
+	position: relative;
+}
+.loader span {
+	position: absolute;
+	display: block;
+	height: 5px;
+	width: 10px;
+	box-shadow: #5ecb96 0 0 15px;
+	animation: animate 2s infinite ease-in-out;
+	opacity: 0;
+}
+.loader span:nth-child(1) {
+	animation-delay: 0s;
+}
+.loader span:nth-child(2) {
+	animation-delay: 0.5s;
+}
+.loader span:nth-child(3) {
+	animation-delay: 1s;
+}
+.loader span:nth-child(4) {
+	animation-delay: 1.5s;
+}
+
+@keyframes animate {
+	0% {
+		left: 0;
+		opacity: 0;
+	}
+	10% {
+		opacity: 0;
+		left: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	80% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 0;
+		left: calc(100% - 10px);
+	}
+	100% {
+		opacity: 0;
+		left: calc(100% - 10px);
+	}
+}
