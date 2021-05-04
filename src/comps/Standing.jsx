@@ -6,9 +6,9 @@ import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 
 const icons = {
-	W: <i class={`fas fa-check-circle ${styles.win}`}></i>,
-	D: <i class={`fas fa-minus-circle ${styles.draw}`}></i>,
-	L: <i class={`fas fa-times-circle ${styles.lose}`}></i>,
+	W: <i className={`fas fa-check-circle ${styles.win}`}></i>,
+	D: <i className={`fas fa-minus-circle ${styles.draw}`}></i>,
+	L: <i className={`fas fa-times-circle ${styles.lose}`}></i>,
 };
 
 export const Statnding = ({ leagueId }) => {

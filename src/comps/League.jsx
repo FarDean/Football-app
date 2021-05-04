@@ -42,7 +42,9 @@ export const League = () => {
 						<Route path={`${path}/standing`}>
 							<Statnding leagueId={league.league.id} />
 						</Route>
-						<Route path={`${path}/fixtures`} component={Fixtures} />
+						<Route path={`${path}/fixtures`}>
+							<Fixtures leagueId={league.league.id} />
+						</Route>
 						<Route path={`${path}/teams`} component={Teams} />
 					</Switch>
 				</main>
