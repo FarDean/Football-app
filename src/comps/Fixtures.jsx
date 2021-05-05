@@ -1,10 +1,16 @@
 import { useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSchedule } from "./../redux/scheduleSlice";
+import styles from "./../styles/Fixtures.module.css";
+import { Loader } from "./utils/Loader";
 
 export const Fixtures = ({ leagueId }) => {
 	const dispatch = useDispatch();
-	const schedule = useSelector(state => state.schedule.schedule);
+	const schedule = useSelector(state =>
+		[...state.schedule.schedule].sort((a, b) => {
+			return new Date(a.fixture.date) - new Date(b.fixture.date);
+		})
+	);
 	const scheduleStatus = useSelector(state => state.schedule.status);
 	const error = useSelector(state => state.schedule.error);
 
@@ -13,14 +19,35 @@ export const Fixtures = ({ leagueId }) => {
 	const nextWeek = getNextWeek();
 
 	useEffect(() => {
-		if (scheduleStatus === "idle") {
-			dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
-		}
-	}, [dispatch, leagueId, lastWeek, nextWeek, scheduleStatus]);
+		dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
+	}, [dispatch, leagueId, lastWeek, nextWeek]);
 
-	console.log(schedule);
-
-	return <h1>Fixtures</h1>;
+	console.log(lastWeek);
+	if (scheduleStatus === "loading") return <Loader />;
+	if (scheduleStatus === "succeeded")
+		return (
+			<div className={styles.parent}>
+				{schedule.map((fixture, i) => (
+					<div className={styles.flexitem} key={i}>
+						<div className={styles.teams1}>
+							<div className={styles.team}>
+								<img className={styles.img} src={fixture.teams.home.logo} alt="" />
+								{fixture.teams.home.name}
+							</div>
+							<div>{fixture.goals.home ?? ` `}</div>
+						</div>
+						<div className={styles.teams2}>
+							<div className={styles.team}>
+								<img className={styles.img} src={fixture.teams.away.logo} alt="" />
+								{fixture.teams.away.name}
+							</div>
+							<div>{fixture.goals.away ?? ` `}</div>
+						</div>
+						<div className={styles.date}>date</div>
+					</div>
+				))}
+			</div>
+		);
 };
 
 function getLastWeek() {

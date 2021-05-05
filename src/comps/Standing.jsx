@@ -57,8 +57,10 @@ export const Statnding = ({ leagueId }) => {
 							<td>{team.goalsDiff}</td>
 							<td>{team.points}</td>
 							<td className={styles.last5}>
-								{[...team.form].map(str => (
-									<span className={styles.form}>{icons[str]}</span>
+								{[...team.form].map((str, i) => (
+									<span key={i} className={styles.form}>
+										{icons[str]}
+									</span>
 								))}
 							</td>
 						</tr>
