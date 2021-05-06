@@ -16,7 +16,7 @@
 	padding: 15px;
 	margin-bottom: 10px;
 	transition: background-color 0.5s ease;
-
+	color: inherit;
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 	grid-template-rows: repeat(2, 1fr);

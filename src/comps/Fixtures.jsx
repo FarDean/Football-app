@@ -5,6 +5,7 @@ import styles from "./../styles/Fixtures.module.css";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import { formatRelative } from "date-fns";
+import { Link } from "react-router-dom";
 
 export const Fixtures = ({ leagueId }) => {
 	const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export const Fixtures = ({ leagueId }) => {
 		return (
 			<div className={styles.parent}>
 				{schedule.map((fixture, i) => (
-					<div className={styles.flexitem} key={i}>
+					<Link key={i} to={`/fixture/${fixture.fixture.id}`} className={styles.flexitem}>
 						<div className={styles.teams1}>
 							<div className={styles.team}>
 								<img className={styles.img} src={fixture.teams.home.logo} alt="" />
@@ -48,7 +49,7 @@ export const Fixtures = ({ leagueId }) => {
 							<div>{fixture.fixture.status.long}</div>
 							<div>{formatRelative(new Date(fixture.fixture.date), new Date())}</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		);
