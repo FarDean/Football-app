@@ -1,9 +1,10 @@
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSchedule } from "./../redux/scheduleSlice";
 import styles from "./../styles/Fixtures.module.css";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
+import { formatRelative } from "date-fns";
 
 export const Fixtures = ({ leagueId }) => {
 	const dispatch = useDispatch();
@@ -23,7 +24,6 @@ export const Fixtures = ({ leagueId }) => {
 		dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
 	}, [dispatch, leagueId, lastWeek, nextWeek]);
 
-	console.log(schedule);
 	if (scheduleStatus === "loading") return <Loader />;
 	if (scheduleStatus === "succeeded")
 		return (
@@ -46,6 +46,7 @@ export const Fixtures = ({ leagueId }) => {
 						</div>
 						<div className={styles.date}>
 							<div>{fixture.fixture.status.long}</div>
+							<div>{formatRelative(new Date(fixture.fixture.date), new Date())}</div>
 						</div>
 					</div>
 				))}

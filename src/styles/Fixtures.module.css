@@ -43,6 +43,10 @@
 	grid-area: 1 / 2 / 3 / 3;
 	color: gray;
 	font-size: 0.9rem;
+	text-align: center;
+}
+.date div + div {
+	margin-top: 15px;
 }
 
 .img {
