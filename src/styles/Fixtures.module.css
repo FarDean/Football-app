@@ -5,6 +5,7 @@
 	margin: 0 auto;
 	flex-wrap: wrap;
 	font-size: 1.2rem;
+	margin-top: 50px;
 }
 
 .flexitem {
@@ -40,6 +41,8 @@
 
 .date {
 	grid-area: 1 / 2 / 3 / 3;
+	color: gray;
+	font-size: 0.9rem;
 }
 
 .img {

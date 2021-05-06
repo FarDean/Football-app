@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSchedule } from "./../redux/scheduleSlice";
 import styles from "./../styles/Fixtures.module.css";
 import { Loader } from "./utils/Loader";
+import { Error } from "./utils/Error";
 
 export const Fixtures = ({ leagueId }) => {
 	const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const Fixtures = ({ leagueId }) => {
 		dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
 	}, [dispatch, leagueId, lastWeek, nextWeek]);
 
-	console.log(lastWeek);
+	console.log(schedule);
 	if (scheduleStatus === "loading") return <Loader />;
 	if (scheduleStatus === "succeeded")
 		return (
@@ -43,11 +44,14 @@ export const Fixtures = ({ leagueId }) => {
 							</div>
 							<div>{fixture.goals.away ?? ` `}</div>
 						</div>
-						<div className={styles.date}>date</div>
+						<div className={styles.date}>
+							<div>{fixture.fixture.status.long}</div>
+						</div>
 					</div>
 				))}
 			</div>
 		);
+	return <Error text={error} />;
 };
 
 function getLastWeek() {
