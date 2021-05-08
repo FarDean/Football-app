@@ -25,6 +25,20 @@ export const Fixtures = ({ leagueId }) => {
 		dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
 	}, [dispatch, leagueId, lastWeek, nextWeek]);
 
+	console.log(schedule);
+
+	// comps
+	const loader = (
+		<div className={styles.container}>
+			<div className={styles.loader}>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	);
+
 	if (scheduleStatus === "loading") return <Loader />;
 	if (scheduleStatus === "succeeded")
 		return (
@@ -46,14 +60,28 @@ export const Fixtures = ({ leagueId }) => {
 							<div>{fixture.goals.away ?? ` `}</div>
 						</div>
 						<div className={styles.date}>
-							<div>{fixture.fixture.status.long}</div>
+							{fixture.fixture.status.long === "Match Finished" ||
+							fixture.fixture.status.long === "Not Started" ? (
+								<div>{fixture.fixture.status.long}</div>
+							) : fixture.fixture.status.long === "Halftime" ? (
+								<div>
+									<div>{fixture.fixture.status.long}</div>
+									{loader}
+								</div>
+							) : (
+								<div>
+									{fixture.fixture.status.elapsed}
+									<span>`</span>
+									{loader}
+								</div>
+							)}
 							<div>{formatRelative(new Date(fixture.fixture.date), new Date())}</div>
 						</div>
 					</Link>
 				))}
 			</div>
 		);
-	return <Error text={error} />;
+	return <Loader />;
 };
 
 function getLastWeek() {
