@@ -67,5 +67,5 @@ export const Fixture = React.memo(() => {
 				</div>
 			</>
 		);
-	return <Error />;
+	return null;
 });
