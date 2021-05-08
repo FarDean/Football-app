@@ -19,7 +19,7 @@ export const Fixture = React.memo(() => {
 		dispatch(fetchSingleFixture(fixtureId));
 	}, [dispatch, fixtureId]);
 
-	console.log(fixtureStatus);
+	console.log(fixture);
 
 	if (fixtureStatus === "succeeded")
 		return (
@@ -31,11 +31,12 @@ export const Fixture = React.memo(() => {
 				</div>
 				{fixtureStatus === "loading" && <Loader />}
 				{fixtureStatus === "failed" && <Error text={error} />}
-				<div>
-					<div>
+				<div className={style.box}>
+					<div className={style.top}>
 						<div>{fixture.league.name}</div>
 						<div>Match Day: {fixture.league.round.slice(17)}</div>
-						{fixture.fixture.status.long === "Match Finished" || "Not Started" ? (
+						{fixture.fixture.status.long === "Match Finished" ||
+						fixture.fixture.status.long === "Not Started" ? (
 							<div>{fixture.fixture.status.long}</div>
 						) : fixture.fixture.status.long === "Halftime" ? (
 							<div>
@@ -64,8 +65,21 @@ export const Fixture = React.memo(() => {
 							</div>
 						)}
 					</div>
+					<div>
+						<div>
+							<img src={fixture.teams.home.logo} alt="" />
+							{fixture.teams.home.name}
+						</div>
+						<div>
+							{fixture.goals.home}-{fixture.goals.away}
+						</div>
+						<div>
+							<img src={fixture.teams.away.logo} alt="" />
+							{fixture.teams.away.name}
+						</div>
+					</div>
 				</div>
 			</>
 		);
-	return null;
+	return <Loader />;
 });
