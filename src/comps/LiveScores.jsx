@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Hero } from "./utils/Hero";
 import styles from "./../styles/LS.module.css";
 import { Error } from "./utils/Error";
+import { Link } from "react-router-dom";
 
 export const LiveScores = () => {
 	const dispatch = useDispatch();
@@ -37,7 +38,7 @@ export const LiveScores = () => {
 			<div>
 				{liveScores.length === 0 && <h1>There are no matches being played currently!</h1>}
 				{liveScores.map((score, i) => (
-					<div className={styles.parent} key={i}>
+					<Link to={`/fixture/${score.fixture.id}`} className={styles.parent} key={i}>
 						<div className={styles.top}>
 							<div className={styles.leaguename}>{score.league.name}</div>
 
@@ -75,7 +76,7 @@ export const LiveScores = () => {
 								<div>{score.teams.away.name}</div>
 							</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</>

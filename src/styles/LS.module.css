@@ -2,6 +2,8 @@
 	width: 80%;
 	margin: 20px auto;
 	cursor: pointer;
+	display: block;
+	color: inherit;
 	border-radius: 16px;
 	padding: 10px;
 	border-bottom: 0.1px solid rgb(235, 235, 235);
@@ -43,7 +45,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.3rem;
+	font-size: 0.9rem;
+	width: 100px;
 }
 
 .goals {
@@ -51,7 +54,7 @@
 	justify-content: space-between;
 	align-items: center;
 	width: 270px;
-	font-size: 4.1rem;
+	font-size: 3.1rem;
 }
 
 .leaguename {
