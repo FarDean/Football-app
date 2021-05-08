@@ -11,7 +11,7 @@ export const fetchSingleFixture = createAsyncThunk("singleFixture/fetchSingleFix
 		},
 	});
 	const data = await res.json();
-	return data.response;
+	return data.response[0];
 });
 
 // Slice
