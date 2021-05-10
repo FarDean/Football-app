@@ -7,6 +7,8 @@ import { Error } from "./utils/Error";
 import style from "./../styles/Fixture.module.css";
 import { Back } from "./utils/Back";
 import { formatRelative } from "date-fns";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 export const Fixture = React.memo(() => {
 	const dispatch = useDispatch();
@@ -81,6 +83,22 @@ export const Fixture = React.memo(() => {
 							</div>
 							<div>{fixture.teams.away.name}</div>
 						</div>
+					</div>
+					<div className={style.tabs}>
+						<Tabs>
+							<TabList className={style.tablist}>
+								<Tab>Statistics</Tab>
+								<Tab>Events</Tab>
+								<Tab>Line Ups</Tab>
+							</TabList>
+
+							<TabPanel>
+								<h2>Any content 1</h2>
+							</TabPanel>
+							<TabPanel>
+								<h2>Any content 2</h2>
+							</TabPanel>
+						</Tabs>
 					</div>
 				</div>
 			</>

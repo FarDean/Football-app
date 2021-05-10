@@ -65,6 +65,15 @@
 	padding: 0 10px;
 }
 
+.tabs {
+	padding: 20px 5px;
+}
+
+/* .tablist ul {
+	display: flex;
+	justify-content: space-around;
+} */
+
 /* Loader */
 #container {
 	max-width: 400px;
