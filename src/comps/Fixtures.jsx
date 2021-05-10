@@ -43,6 +43,7 @@ export const Fixtures = ({ leagueId }) => {
 	if (scheduleStatus === "succeeded")
 		return (
 			<div className={styles.parent}>
+				{error && <Error text={error} />}
 				{schedule.map((fixture, i) => (
 					<Link key={i} to={`/fixture/${fixture.fixture.id}`} className={styles.flexitem}>
 						<div className={styles.teams1}>

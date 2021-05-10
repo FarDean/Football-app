@@ -6,6 +6,7 @@ import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import style from "./../styles/Fixture.module.css";
 import { Back } from "./utils/Back";
+import { formatRelative } from "date-fns";
 
 export const Fixture = React.memo(() => {
 	const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export const Fixture = React.memo(() => {
 					<div className={style.top}>
 						<div>{fixture.league.name}</div>
 						<div>Match Day: {fixture.league.round.slice(17)}</div>
+						<div>{formatRelative(new Date(fixture.fixture.date), new Date())}</div>
 						{fixture.fixture.status.long === "Match Finished" ||
 						fixture.fixture.status.long === "Not Started" ? (
 							<div>{fixture.fixture.status.long}</div>
@@ -61,17 +63,23 @@ export const Fixture = React.memo(() => {
 							</div>
 						)}
 					</div>
-					<div>
-						<div>
-							<img src={fixture.teams.home.logo} alt="" />
-							{fixture.teams.home.name}
+					<div className={style.teams}>
+						<div className={style.team}>
+							<div>
+								<img src={fixture.teams.home.logo} alt="" />
+							</div>
+							<div>{fixture.teams.home.name}</div>
 						</div>
-						<div>
-							{fixture.goals.home}-{fixture.goals.away}
+						<div className={style.score}>
+							<div>{fixture.goals.home}</div>
+							<div>-</div>
+							<div>{fixture.goals.away}</div>
 						</div>
-						<div>
-							<img src={fixture.teams.away.logo} alt="" />
-							{fixture.teams.away.name}
+						<div className={style.team}>
+							<div>
+								<img src={fixture.teams.away.logo} alt="" />
+							</div>
+							<div>{fixture.teams.away.name}</div>
 						</div>
 					</div>
 				</div>

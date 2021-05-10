@@ -38,6 +38,34 @@
 	color: gray;
 }
 
+.teams {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 5px;
+	text-align: center;
+}
+.team div {
+	display: flex;
+	justify-content: center;
+}
+.team img {
+	display: block;
+	width: 78px;
+	height: 78px;
+}
+
+.score {
+	font-size: 2.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.score div {
+	padding: 0 10px;
+}
+
+/* Loader */
 #container {
 	max-width: 400px;
 	margin: 0 auto;
