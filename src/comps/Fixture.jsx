@@ -1,10 +1,11 @@
 import { fetchSingleFixture } from "./../redux/singleFixtureSlice";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import style from "./../styles/Fixture.module.css";
+import { Back } from "./utils/Back";
 
 export const Fixture = React.memo(() => {
 	const dispatch = useDispatch();
@@ -13,7 +14,6 @@ export const Fixture = React.memo(() => {
 	const error = useSelector(state => state.singleFixture.error);
 
 	let { fixtureId } = useParams();
-	let history = useHistory();
 
 	useEffect(() => {
 		dispatch(fetchSingleFixture(fixtureId));
@@ -24,11 +24,7 @@ export const Fixture = React.memo(() => {
 	if (fixtureStatus === "succeeded")
 		return (
 			<>
-				<div className={style.back}>
-					<div onClick={() => history.goBack()} className={style.mark}>
-						<i className="fas fa-arrow-left"></i>
-					</div>
-				</div>
+				<Back />
 				{fixtureStatus === "loading" && <Loader />}
 				{fixtureStatus === "failed" && <Error text={error} />}
 				<div className={style.box}>
