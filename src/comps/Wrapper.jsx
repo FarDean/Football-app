@@ -60,7 +60,6 @@ export const Wrapper = React.memo(() => {
 						</div>
 					</nav>
 				</header>
-				<hr />
 			</>
 		);
 
