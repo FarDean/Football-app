@@ -15,6 +15,9 @@
 
 .tbrow {
 	line-height: 2;
+	height: 50px;
+	vertical-align: middle;
+	border-bottom: 0.5px solid rgb(230, 230, 230);
 	font-size: 1.1rem;
 	cursor: pointer;
 	transition: background-color 0.4s ease;
@@ -32,6 +35,8 @@
 
 .flex {
 	display: flex;
+	align-items: center;
+	height: 50px;
 }
 
 .span {
