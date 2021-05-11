@@ -14,10 +14,6 @@ export const LiveScores = () => {
 	useEffect(() => {
 		let apiTimeout;
 
-		if (liveScoreStatus === "idle") {
-			dispatch(fetchLiveScores());
-		}
-
 		if (liveScoreStatus === "succeeded") {
 			apiTimeout = setTimeout(() => {
 				dispatch(fetchLiveScores());
@@ -28,6 +24,10 @@ export const LiveScores = () => {
 			clearTimeout(apiTimeout);
 		};
 	}, [dispatch, liveScoreStatus]);
+
+	useEffect(() => {
+		dispatch(fetchLiveScores());
+	}, [dispatch]);
 
 	console.log("live", liveScores);
 	if (liveScoreStatus === "failed") return <Error />;
