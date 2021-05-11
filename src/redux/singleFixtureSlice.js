@@ -20,6 +20,8 @@ export const singleFixtureSlice = createSlice({
 	initialState: {
 		status: "idle",
 		fixture: {},
+		teamOneStats: [],
+		teamTwoStats: [],
 		error: null,
 	},
 	reducers: {},

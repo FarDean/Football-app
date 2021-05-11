@@ -15,6 +15,8 @@ export const Fixture = React.memo(() => {
 	const fixture = useSelector(state => state.singleFixture.fixture);
 	const fixtureStatus = useSelector(state => state.singleFixture.status);
 	const error = useSelector(state => state.singleFixture.error);
+	const teamOneStats = useSelector(state => state.singleFixture.teamOneStats);
+	const teamTwoStats = useSelector(state => state.singleFixture.teamTwoStats);
 
 	let { fixtureId } = useParams();
 
@@ -93,10 +95,33 @@ export const Fixture = React.memo(() => {
 							</TabList>
 
 							<TabPanel>
-								<h2>Any content 1</h2>
+								{fixture.statistics.length === 0 ? (
+									<h2 className={style.h2}>No Statistics!</h2>
+								) : (
+									<div className={style.grid}>
+										<div className={style.div1}>
+											{fixture.statistics[0].statistics.map((stat, i) => (
+												<div>{stat.type}</div>
+											))}
+										</div>
+										<div className={style.div2}>
+											{fixture.statistics[0].statistics.map((stat, i) => (
+												<div>{stat.value ?? "0"}</div>
+											))}
+										</div>
+										<div className={style.div3}>
+											{fixture.statistics[1].statistics.map((stat, i) => (
+												<div>{stat.value ?? "0"}</div>
+											))}
+										</div>
+									</div>
+								)}
 							</TabPanel>
 							<TabPanel>
 								<h2>Any content 2</h2>
+							</TabPanel>
+							<TabPanel>
+								<h2>Any content 3</h2>
 							</TabPanel>
 						</Tabs>
 					</div>
