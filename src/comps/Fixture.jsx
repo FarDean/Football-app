@@ -15,8 +15,6 @@ export const Fixture = React.memo(() => {
 	const fixture = useSelector(state => state.singleFixture.fixture);
 	const fixtureStatus = useSelector(state => state.singleFixture.status);
 	const error = useSelector(state => state.singleFixture.error);
-	const teamOneStats = useSelector(state => state.singleFixture.teamOneStats);
-	const teamTwoStats = useSelector(state => state.singleFixture.teamTwoStats);
 
 	let { fixtureId } = useParams();
 
@@ -101,24 +99,38 @@ export const Fixture = React.memo(() => {
 									<div className={style.grid}>
 										<div className={style.div1}>
 											{fixture.statistics[0].statistics.map((stat, i) => (
-												<div>{stat.type}</div>
+												<div key={i}>{stat.type}</div>
 											))}
 										</div>
 										<div className={style.div2}>
 											{fixture.statistics[0].statistics.map((stat, i) => (
-												<div>{stat.value ?? "0"}</div>
+												<div key={i}>{stat.value ?? "0"}</div>
 											))}
 										</div>
 										<div className={style.div3}>
 											{fixture.statistics[1].statistics.map((stat, i) => (
-												<div>{stat.value ?? "0"}</div>
+												<div key={i}>{stat.value ?? "0"}</div>
 											))}
 										</div>
 									</div>
 								)}
 							</TabPanel>
 							<TabPanel>
-								<h2>Any content 2</h2>
+								<div>
+									{fixture.events.map((event, i) => (
+										<div>
+											<div>
+												<div>{event.detail}</div>
+												<div>{event.team.name}</div>
+												<div>{event.time.elapsed}`</div>
+											</div>
+											<div>
+												<div>{event.player.name}</div>
+												<div>{event.assist.name ?? ""}</div>
+											</div>
+										</div>
+									))}
+								</div>
 							</TabPanel>
 							<TabPanel>
 								<h2>Any content 3</h2>
