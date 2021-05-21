@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSchedule } from "./../redux/scheduleSlice";
+import { fetchSchedule } from "../redux/scheduleSlice";
 import styles from "./../styles/Fixtures.module.css";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";

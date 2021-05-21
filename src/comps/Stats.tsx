@@ -1,4 +1,4 @@
-import { fetchStats } from "./../redux/statsSlice";
+import { fetchStats } from "../redux/statsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useQuery } from "./../hooks/useQuery";

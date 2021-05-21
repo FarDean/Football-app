@@ -1,4 +1,4 @@
-import { fetchSingleFixture } from "./../redux/singleFixtureSlice";
+import { fetchSingleFixture } from "../redux/singleFixtureSlice";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";

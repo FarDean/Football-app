@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchLeagues } from "./../redux/leagueSlice";
+import { fetchLeagues } from "../redux/leagueSlice";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./../styles/Wrapper.module.css";
 import { Error } from "./utils/Error";

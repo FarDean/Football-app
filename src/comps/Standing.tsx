@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchStanding } from "./../redux/standingSlice";
+import { fetchStanding } from "../redux/standingSlice";
 import { useEffect } from "react";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";

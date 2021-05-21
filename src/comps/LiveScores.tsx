@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchLiveScores } from "./../redux/liveScoreSlice";
+import { fetchLiveScores } from "../redux/liveScoreSlice";
 import { useEffect } from "react";
 import { Hero } from "./utils/Hero";
 import styles from "./../styles/LS.module.css";
