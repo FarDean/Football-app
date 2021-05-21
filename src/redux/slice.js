@@ -36,7 +36,7 @@ export const {} = userSlice.actions;
 
 export default userSlice.reducer;
 
-// Selectors
+//Custom Selectors
 export const selectAllUsers = state => state.users;
 
 export const selectUserById = (state, userId) => state.users.find(x => x.id === userId);
