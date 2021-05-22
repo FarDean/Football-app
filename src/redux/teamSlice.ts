@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { config } from "./../config";
+import { config } from "../config";
 // Types
 interface TeamState {
 	status: string;
@@ -19,20 +19,23 @@ const initialState: TeamState = {
 };
 
 // Thunk
-export const fetchTeam = createAsyncThunk("team/fetchTeam", async (params: Params) => {
-	const res = await fetch(
-		`https://v3.football.api-sports.io/teams/statistics?league=${params.leagueId}&team=${params.teamId}&season=${config.defaultSeason}`,
-		{
-			method: "GET",
-			headers: {
-				"x-rapidapi-host": config.host,
-				"x-rapidapi-key": config.key,
-			},
-		}
-	);
-	const data = await res.json();
-	return data.response;
-});
+export const fetchTeam = createAsyncThunk(
+	"team/fetchTeam",
+	async ({ leagueId, teamId }: Params) => {
+		const res = await fetch(
+			`https://v3.football.api-sports.io/teams/statistics?league=${leagueId}&team=${teamId}&season=${config.defaultSeason}`,
+			{
+				method: "GET",
+				headers: {
+					"x-rapidapi-host": config.host,
+					"x-rapidapi-key": config.key,
+				},
+			}
+		);
+		const data = await res.json();
+		return data.response;
+	}
+);
 
 // Slice
 export const teamSlice = createSlice({
