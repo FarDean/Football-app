@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import store from "./redux/store";
+import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { MainRouter } from "./MainRouter";
 import { Container } from "./comps/utils/Container";
