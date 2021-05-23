@@ -1,10 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { config } from "./../config";
+import { config } from "../config";
+
+// Types
+interface ScheduleState {
+	status: string;
+	schedule: unknown[];
+	error: null | string;
+}
+
+interface Params {
+	leagueId: string | number;
+	lastWeek: string;
+	nextWeek: string;
+}
+
+const initialState: ScheduleState = {
+	status: "idle",
+	schedule: [],
+	error: null,
+};
 
 // Thunk
 export const fetchSchedule = createAsyncThunk(
 	"schedule/fetchSchedule",
-	async ({ leagueId, lastWeek, nextWeek }) => {
+	async ({ leagueId, lastWeek, nextWeek }: Params) => {
 		const res = await fetch(
 			`https://v3.football.api-sports.io/fixtures?league=${leagueId}&season=${config.defaultSeason}&from=${lastWeek}&to=${nextWeek}`,
 			{
@@ -23,24 +42,20 @@ export const fetchSchedule = createAsyncThunk(
 // Slice
 export const scheduleSlice = createSlice({
 	name: "schedule",
-	initialState: {
-		status: "idle",
-		schedule: [],
-		error: null,
-	},
+	initialState,
 	reducers: {},
-	extraReducers: {
-		[fetchSchedule.pending]: (state, action) => {
+	extraReducers: builder => {
+		builder.addCase(fetchSchedule.pending, (state, actoin) => {
 			state.status = "loading";
-		},
-		[fetchSchedule.fulfilled]: (state, action) => {
+		});
+		builder.addCase(fetchSchedule.fulfilled, (state, action) => {
 			state.status = "succeeded";
 			state.schedule = action.payload;
-		},
-		[fetchSchedule.rejected]: (state, action) => {
+		});
+		builder.addCase(fetchSchedule.rejected, (state, action) => {
 			state.status = "failed";
 			state.error = action.error.message;
-		},
+		});
 	},
 });
 
