@@ -1,5 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "../config";
+
+// Types
+interface LiveScores {
+	liveScores: unknown[];
+	status: string;
+	error: null | string;
+}
+
+const initialState: LiveScores = {
+	liveScores: [],
+	status: "idle",
+	error: null,
+};
+
 // Thunk
 export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", async () => {
 	const res = await fetch("https://v3.football.api-sports.io/fixtures?live=39-135-140-78", {
@@ -16,24 +30,20 @@ export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", as
 // slice
 export const liveScoresSlice = createSlice({
 	name: "livescore",
-	initialState: {
-		liveScores: [],
-		status: "idle",
-		error: null,
-	},
+	initialState,
 	reducers: {},
-	extraReducers: {
-		[fetchLiveScores.pending]: (state, action) => {
+	extraReducers: builer => {
+		builer.addCase(fetchLiveScores.pending, (state, action) => {
 			state.status = "loading";
-		},
-		[fetchLiveScores.fulfilled]: (state, action) => {
+		});
+		builer.addCase(fetchLiveScores.fulfilled, (state, action) => {
 			state.status = "succeeded";
 			state.liveScores = action.payload;
-		},
-		[fetchLiveScores.rejected]: (state, action) => {
+		});
+		builer.addCase(fetchLiveScores.rejected, (state, action) => {
 			state.status = "failed";
 			state.error = action.error.message;
-		},
+		});
 	},
 });
 
