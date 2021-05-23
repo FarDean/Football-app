@@ -4,7 +4,7 @@ import { config } from "../config";
 interface TeamState {
 	status: string;
 	team: unknown;
-	error: null | string;
+	error: string | undefined | null;
 }
 interface Params {
 	leagueId: number;

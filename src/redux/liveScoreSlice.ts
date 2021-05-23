@@ -5,7 +5,7 @@ import { config } from "../config";
 interface LiveScores {
 	liveScores: unknown[];
 	status: string;
-	error: null | string;
+	error: string | undefined | null;
 }
 
 const initialState: LiveScores = {

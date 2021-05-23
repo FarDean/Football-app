@@ -5,7 +5,7 @@ import { config } from "../config";
 interface SingleFixtureState {
 	status: string;
 	fixture: unknown;
-	error: null | string;
+	error: string | undefined | null;
 }
 
 const initialState: SingleFixtureState = {

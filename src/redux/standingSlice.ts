@@ -5,7 +5,7 @@ import { config } from "../config";
 interface StandingState {
 	status: string;
 	standing: unknown[];
-	error: null | string;
+	error: string | undefined | null;
 }
 
 const initialState: StandingState = {

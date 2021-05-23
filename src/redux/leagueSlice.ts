@@ -3,9 +3,9 @@ import { config } from "../config";
 
 // Types
 interface LeagueState {
-	leagues: unknown[];
+	leagues: League[];
 	status: string;
-	error: null | string;
+	error: string | undefined | null;
 }
 
 const initialState: LeagueState = {
@@ -13,6 +13,21 @@ const initialState: LeagueState = {
 	status: "idle",
 	error: null,
 };
+
+interface League {
+	league: {
+		id: number;
+		name: string;
+		type: string;
+		logo: string;
+	};
+	country: {
+		name: string;
+		code: string;
+		flage: string;
+	};
+	season: any;
+}
 
 // Thunk
 export const fetchLeagues = createAsyncThunk(
@@ -41,10 +56,10 @@ export const leagueSlice = createSlice({
 		});
 		builder.addCase(fetchLeagues.fulfilled, (state, action) => {
 			state.status = "succeeded";
-			const serieA = action.payload.find(x => x.league.id === 135);
-			const premierLeague = action.payload.find(x => x.league.id === 39);
-			const laLiga = action.payload.find(x => x.league.id === 140);
-			const bundesLiga = action.payload.find(x => x.league.id === 78);
+			const serieA = action.payload.find((x: League) => x.league.id === 135);
+			const premierLeague = action.payload.find((x: League) => x.league.id === 39);
+			const laLiga = action.payload.find((x: League) => x.league.id === 140);
+			const bundesLiga = action.payload.find((x: League) => x.league.id === 78);
 			state.leagues.push(serieA);
 			state.leagues.push(premierLeague);
 			state.leagues.push(laLiga);

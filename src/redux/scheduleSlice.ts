@@ -5,7 +5,7 @@ import { config } from "../config";
 interface ScheduleState {
 	status: string;
 	schedule: unknown[];
-	error: null | string;
+	error: string | undefined | null;
 }
 
 interface Params {
