@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import styles from "./../../styles/utils/Back.module.css";
-export const Back = () => {
+
+export const Back: React.FC = (): JSX.Element => {
 	let history = useHistory();
 
 	return (

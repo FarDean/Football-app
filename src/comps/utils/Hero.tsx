@@ -1,5 +1,11 @@
 import styles from "./../../styles/Hero.module.css";
-export const Hero = ({ text, icon = null }) => {
+
+interface Props {
+	text: string;
+	icon?: string;
+}
+
+export const Hero: React.FC<Props> = ({ text, icon }): JSX.Element => {
 	return (
 		<div className={styles.hero}>
 			<h1>{text}</h1>

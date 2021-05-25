@@ -1,6 +1,6 @@
 import styles from "./../../styles/utils/Loader.module.css";
 
-export const Loader = () => {
+export const Loader: React.FC = (): JSX.Element => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.box}>
