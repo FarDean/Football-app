@@ -1,15 +1,15 @@
 import { useAppSelector, useAppDispatch } from "./../redux/hooks";
 import { fetchStanding } from "../redux/standingSlice";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 
-const icons = {
+const icons: { [key: string]: any } = {
 	W: <i className={`fas fa-check-circle ${styles.win}`}></i>,
 	D: <i className={`fas fa-minus-circle ${styles.draw}`}></i>,
 	L: <i className={`fas fa-times-circle ${styles.lose}`}></i>,
-};
+} as const;
 
 interface Props {
 	leagueId: string | number;
@@ -45,7 +45,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						<td className={styles.last5}>Last 5</td>
 					</tr>
 
-					{standing[0].league.standings[0].map((team, i) => (
+					{standing[0].league.standings[0].map((team: any, i: number) => (
 						<tr className={styles.tbrow} key={i}>
 							<td className={styles.flex}>
 								<span className={styles.span}>{team.rank}</span>
