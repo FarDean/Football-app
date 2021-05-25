@@ -6,6 +6,7 @@ import { Statnding } from "./Standing";
 import { Fixtures } from "./Fixtures";
 import { Teams } from "./Teams";
 import { Error } from "./utils/Error";
+import { Loader } from "./utils/Loader";
 
 export const League: React.FC = (): JSX.Element => {
 	let { path, url } = useRouteMatch();
@@ -23,10 +24,11 @@ export const League: React.FC = (): JSX.Element => {
 			: `${styles.tab}`;
 	};
 
-	if (leaguesStatus === "succeeded")
+	if (leaguesStatus === "loading") return <Loader />;
+	if (leaguesStatus === "succeeded" && league)
 		return (
 			<>
-				<Hero text={league!.league.name} icon={league!.league.logo} />
+				<Hero text={league.league.name} icon={league.league.logo} />
 				<main>
 					<div className={styles.tabs}>
 						<div className={getClass("standing")}>
@@ -41,10 +43,10 @@ export const League: React.FC = (): JSX.Element => {
 					</div>
 					<Switch>
 						<Route path={`${path}/standing`}>
-							<Statnding leagueId={league!.league.id} />
+							<Statnding leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/fixtures`}>
-							<Fixtures leagueId={league!.league.id} />
+							<Fixtures leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/teams`} component={Teams} />
 					</Switch>
