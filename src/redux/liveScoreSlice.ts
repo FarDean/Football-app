@@ -2,13 +2,13 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "../config";
 
 // Types
-interface LiveScores {
+interface LiveScoresState {
 	liveScores: any[];
 	status: "idle" | "loading" | "failed" | "succeeded";
 	error: string | undefined | null;
 }
 
-const initialState: LiveScores = {
+const initialState: LiveScoresState = {
 	liveScores: [],
 	status: "idle",
 	error: null,

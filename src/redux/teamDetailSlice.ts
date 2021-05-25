@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { config } from "../config";
 // Types
 interface TeamState {
-	status: string;
-	team: unknown;
+	status: "idle" | "loading" | "failed" | "succeeded";
+	team: any;
 	error: string | undefined | null;
 }
 interface Params {

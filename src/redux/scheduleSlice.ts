@@ -3,7 +3,7 @@ import { config } from "../config";
 
 // Types
 interface ScheduleState {
-	status: string;
+	status: "idle" | "loading" | "failed" | "succeeded";
 	schedule: any[];
 	error: string | undefined | null;
 }

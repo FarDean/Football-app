@@ -25,7 +25,7 @@ export const League = () => {
 	if (leaguesStatus === "succeeded")
 		return (
 			<>
-				<Hero text={league?.league.name} icon={league?.league.logo} />
+				<Hero text={league?.league.name} icon={league.league.logo} />
 				<main>
 					<div className={styles.tabs}>
 						<div className={getClass("standing")}>
@@ -40,10 +40,10 @@ export const League = () => {
 					</div>
 					<Switch>
 						<Route path={`${path}/standing`}>
-							<Statnding leagueId={league?.league.id} />
+							<Statnding leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/fixtures`}>
-							<Fixtures leagueId={league?.league.id} />
+							<Fixtures leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/teams`} component={Teams} />
 					</Switch>
