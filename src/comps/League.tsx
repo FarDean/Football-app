@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useAppSelector } from "./../redux/hooks";
 import { useRouteMatch, Link, Switch, Route, useParams } from "react-router-dom";
 import { Hero } from "./utils/Hero";
 import styles from "./../styles/LeagueWrapper.module.css";
@@ -9,14 +9,14 @@ import { Error } from "./utils/Error";
 
 export const League = () => {
 	let { path, url } = useRouteMatch();
-	let { leagueName } = useParams();
+	let { leagueName }: { leagueName: string } = useParams();
 
-	const league = useSelector(state =>
+	const league = useAppSelector(state =>
 		state.league.leagues.find(x => x.league.name === leagueName.replace(/-/g, " "))
 	);
-	const leaguesStatus = useSelector(state => state.league.status);
+	const leaguesStatus = useAppSelector(state => state.league.status);
 
-	const getClass = linkName => {
+	const getClass = (linkName: string) => {
 		return window.location.href.includes(linkName)
 			? `${styles.tab} ${styles.active}`
 			: `${styles.tab}`;
@@ -25,7 +25,7 @@ export const League = () => {
 	if (leaguesStatus === "succeeded")
 		return (
 			<>
-				<Hero text={league.league.name} icon={league.league.logo} />
+				<Hero text={league?.league.name} icon={league?.league.logo} />
 				<main>
 					<div className={styles.tabs}>
 						<div className={getClass("standing")}>
@@ -40,10 +40,10 @@ export const League = () => {
 					</div>
 					<Switch>
 						<Route path={`${path}/standing`}>
-							<Statnding leagueId={league.league.id} />
+							<Statnding leagueId={league?.league.id} />
 						</Route>
 						<Route path={`${path}/fixtures`}>
-							<Fixtures leagueId={league.league.id} />
+							<Fixtures leagueId={league?.league.id} />
 						</Route>
 						<Route path={`${path}/teams`} component={Teams} />
 					</Switch>

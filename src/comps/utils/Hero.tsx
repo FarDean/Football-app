@@ -1,7 +1,7 @@
 import styles from "./../../styles/Hero.module.css";
 
 interface Props {
-	text: string;
+	text?: string;
 	icon?: string;
 }
 
