@@ -3,10 +3,14 @@ import { config } from "../config";
 
 // Types
 interface SingleFixtureState {
-	status: string;
-	fixture: unknown;
+	status: "idle" | "loading" | "succeeded" | "failed";
+	fixture: any;
 	error: string | undefined | null;
 }
+
+// interface Fixture {
+
+// }
 
 const initialState: SingleFixtureState = {
 	status: "idle",

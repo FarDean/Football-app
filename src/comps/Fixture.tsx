@@ -1,5 +1,5 @@
 import { fetchSingleFixture } from "../redux/singleFixtureSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "./../redux/hooks";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Loader } from "./utils/Loader";
@@ -10,13 +10,13 @@ import { formatRelative } from "date-fns";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-export const Fixture = React.memo(() => {
-	const dispatch = useDispatch();
-	const fixture = useSelector(state => state.singleFixture.fixture);
-	const fixtureStatus = useSelector(state => state.singleFixture.status);
-	const error = useSelector(state => state.singleFixture.error);
+export const Fixture: React.FC = React.memo((): JSX.Element => {
+	const dispatch = useAppDispatch();
+	const fixture = useAppSelector(state => state.singleFixture.fixture);
+	const fixtureStatus = useAppSelector(state => state.singleFixture.status);
+	const error = useAppSelector(state => state.singleFixture.error);
 
-	let { fixtureId } = useParams();
+	let { fixtureId }: { fixtureId: string } = useParams();
 
 	useEffect(() => {
 		dispatch(fetchSingleFixture(fixtureId));
@@ -24,12 +24,24 @@ export const Fixture = React.memo(() => {
 
 	console.log(fixture);
 
+	if (fixtureStatus === "loading")
+		return (
+			<>
+				<Back />
+				<Loader />
+			</>
+		);
+	if (fixtureStatus === "failed")
+		return (
+			<>
+				<Back />
+				<Error text={error} />
+			</>
+		);
 	if (fixtureStatus === "succeeded")
 		return (
 			<>
 				<Back />
-				{fixtureStatus === "loading" && <Loader />}
-				{fixtureStatus === "failed" && <Error text={error} />}
 				<div className={style.box}>
 					<div className={style.top}>
 						<div>{fixture.league.name}</div>
