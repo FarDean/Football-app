@@ -110,27 +110,33 @@ export const Fixture: React.FC = React.memo((): JSX.Element => {
 								) : (
 									<div className={style.grid}>
 										<div className={style.div1}>
-											{fixture.statistics[0].statistics.map((stat, i) => (
-												<div key={i}>{stat.type}</div>
-											))}
+											{fixture.statistics[0].statistics.map(
+												(stat: any, i: number) => (
+													<div key={i}>{stat.type}</div>
+												)
+											)}
 										</div>
 										<div className={style.div2}>
-											{fixture.statistics[0].statistics.map((stat, i) => (
-												<div key={i}>{stat.value ?? "0"}</div>
-											))}
+											{fixture.statistics[0].statistics.map(
+												(stat: any, i: number) => (
+													<div key={i}>{stat.value ?? "0"}</div>
+												)
+											)}
 										</div>
 										<div className={style.div3}>
-											{fixture.statistics[1].statistics.map((stat, i) => (
-												<div key={i}>{stat.value ?? "0"}</div>
-											))}
+											{fixture.statistics[1].statistics.map(
+												(stat: any, i: number) => (
+													<div key={i}>{stat.value ?? "0"}</div>
+												)
+											)}
 										</div>
 									</div>
 								)}
 							</TabPanel>
 							<TabPanel>
 								<div>
-									{fixture.events.map((event, i) => (
-										<div>
+									{fixture.events.map((event: any, i: number) => (
+										<div key={i}>
 											<div>
 												<div>{event.detail}</div>
 												<div>{event.team.name}</div>

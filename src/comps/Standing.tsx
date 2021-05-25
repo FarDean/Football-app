@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "./../redux/hooks";
 import { fetchStanding } from "../redux/standingSlice";
 import { useEffect } from "react";
 import { Loader } from "./utils/Loader";
@@ -11,12 +11,16 @@ const icons = {
 	L: <i className={`fas fa-times-circle ${styles.lose}`}></i>,
 };
 
-export const Statnding = ({ leagueId }) => {
-	const dispatch = useDispatch();
+interface Props {
+	leagueId: string | number;
+}
+
+export const Statnding: React.FC<Props> = ({ leagueId }) => {
+	const dispatch = useAppDispatch();
 	// selectors
-	const standing = useSelector(state => state.standing.standing);
-	const standingStatus = useSelector(state => state.standing.status);
-	const error = useSelector(state => state.standing.error);
+	const standing = useAppSelector(state => state.standing.standing);
+	const standingStatus = useAppSelector(state => state.standing.status);
+	const error = useAppSelector(state => state.standing.error);
 
 	useEffect(() => {
 		dispatch(fetchStanding(leagueId));

@@ -4,7 +4,7 @@ import { config } from "../config";
 // Thunk
 interface StandingState {
 	status: "idle" | "loading" | "failed" | "succeeded";
-	standing: unknown[];
+	standing: any[];
 	error: string | undefined | null;
 }
 
