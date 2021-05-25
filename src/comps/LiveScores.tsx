@@ -29,7 +29,6 @@ export const LiveScores = () => {
 		dispatch(fetchLiveScores());
 	}, [dispatch]);
 
-	console.log("live", liveScores);
 	if (liveScoreStatus === "failed") return <Error />;
 
 	return (
