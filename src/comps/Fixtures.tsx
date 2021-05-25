@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./../redux/hooks";
 import { fetchSchedule } from "../redux/scheduleSlice";
 import styles from "./../styles/Fixtures.module.css";
 import { Loader } from "./utils/Loader";
@@ -7,15 +7,19 @@ import { Error } from "./utils/Error";
 import { formatRelative } from "date-fns";
 import { Link } from "react-router-dom";
 
-export const Fixtures = ({ leagueId }) => {
-	const dispatch = useDispatch();
-	const schedule = useSelector(state =>
+interface Props {
+	leagueId: string | number;
+}
+
+export const Fixtures: React.FC<Props> = ({ leagueId }): JSX.Element => {
+	const dispatch = useAppDispatch();
+	const schedule = useAppSelector(state =>
 		[...state.schedule.schedule].sort((a, b) => {
-			return new Date(a.fixture.date) - new Date(b.fixture.date);
+			return new Date(a.fixture.date).getTime() - new Date(b.fixture.date).getTime();
 		})
 	);
-	const scheduleStatus = useSelector(state => state.schedule.status);
-	const error = useSelector(state => state.schedule.error);
+	const scheduleStatus = useAppSelector(state => state.schedule.status);
+	const error = useAppSelector(state => state.schedule.error);
 
 	const lastWeek = getLastWeek();
 
@@ -85,7 +89,7 @@ export const Fixtures = ({ leagueId }) => {
 	return <Loader />;
 };
 
-function getLastWeek() {
+function getLastWeek(): string {
 	const today = new Date();
 	const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
 	const lastWeekMonth = lastWeek.getMonth() + 1;
@@ -100,7 +104,7 @@ function getLastWeek() {
 	);
 }
 
-function getNextWeek() {
+function getNextWeek(): string {
 	const today = new Date();
 	const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
 	const lastWeekMonth = lastWeek.getMonth() + 1;

@@ -4,7 +4,7 @@ import { config } from "../config";
 // Types
 interface ScheduleState {
 	status: string;
-	schedule: unknown[];
+	schedule: any[];
 	error: string | undefined | null;
 }
 
