@@ -3,8 +3,8 @@ import { config } from "../config";
 
 // Types
 interface LiveScores {
-	liveScores: unknown[];
-	status: string;
+	liveScores: any[];
+	status: "idle" | "loading" | "failed" | "succeeded";
 	error: string | undefined | null;
 }
 

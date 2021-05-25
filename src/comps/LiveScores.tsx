@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "./../redux/hooks";
 import { fetchLiveScores } from "../redux/liveScoreSlice";
 import { useEffect } from "react";
 import { Hero } from "./utils/Hero";
@@ -7,12 +7,12 @@ import { Error } from "./utils/Error";
 import { Link } from "react-router-dom";
 
 export const LiveScores = () => {
-	const dispatch = useDispatch();
-	const liveScores = useSelector(state => state.livescore.liveScores);
-	const liveScoreStatus = useSelector(state => state.livescore.status);
+	const dispatch = useAppDispatch();
+	const liveScores = useAppSelector(state => state.livescore.liveScores);
+	const liveScoreStatus = useAppSelector(state => state.livescore.status);
 
 	useEffect(() => {
-		let apiTimeout;
+		let apiTimeout: ReturnType<typeof setTimeout>;
 
 		if (liveScoreStatus === "succeeded") {
 			apiTimeout = setTimeout(() => {
