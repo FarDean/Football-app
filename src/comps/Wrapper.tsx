@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchLeagues } from "../redux/leagueSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "./../redux/hooks";
 import styles from "./../styles/Wrapper.module.css";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
 import React from "react";
 import slugify from "slugify";
 
-export const Wrapper = React.memo(() => {
-	const dispatch = useDispatch();
+export const Wrapper: React.FC = React.memo((): JSX.Element => {
+	const dispatch = useAppDispatch();
 
-	const leagues = useSelector(state => state.league.leagues);
-	const leaguesStatus = useSelector(state => state.league.status);
-	const error = useSelector(state => state.league.error);
+	const leagues = useAppSelector(state => state.league.leagues);
+	const leaguesStatus = useAppSelector(state => state.league.status);
+	const error = useAppSelector(state => state.league.error);
 
 	useEffect(() => {
 		if (leaguesStatus === "idle") {
@@ -63,5 +63,5 @@ export const Wrapper = React.memo(() => {
 			</>
 		);
 
-	return <Error />;
+	return <Error text={error} />;
 });
