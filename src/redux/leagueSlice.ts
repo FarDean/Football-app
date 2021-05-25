@@ -14,7 +14,7 @@ const initialState: LeagueState = {
 	error: null,
 };
 
-interface League {
+export interface League {
 	league: {
 		id: number;
 		name: string;
