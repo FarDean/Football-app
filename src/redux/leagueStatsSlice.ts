@@ -31,12 +31,13 @@ export const fetchLeagueStats = createAsyncThunk(
 			`https://v3.football.api-sports.io/players/topredcards?season=${config.defaultSeason}&league=${leagueId}`
 		);
 
-		const res = await Promise.all([
+		let [topScorers, topAssists, topYellowCards, topRedCards] = await Promise.all([
 			getTopScorers,
 			getTopAssists,
 			getTopYellowCards,
 			getTopRedCards,
 		]);
+
 		const data = res.map(async call => {
 			const resolved = await call.json();
 			return resolved.response;

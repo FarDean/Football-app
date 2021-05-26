@@ -49,7 +49,7 @@ export const League: React.FC = (): JSX.Element => {
 							<Fixtures leagueId={league.league.id} />
 						</Route>
 						<Route path={`${path}/stats`}>
-							<LeagueStats />
+							<LeagueStats leagueId={league.league.id} />
 						</Route>
 					</Switch>
 				</main>
