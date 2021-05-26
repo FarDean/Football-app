@@ -19,16 +19,44 @@ export const fetchLeagueStats = createAsyncThunk(
 	"leagueStats/fetchLeagueStats",
 	async (leagueId: string | number) => {
 		const getTopScorers = fetch(
-			`https://v3.football.api-sports.io/players/topscorers?season=${config.defaultSeason}&league=${leagueId}`
+			`https://v3.football.api-sports.io/players/topscorers?season=${config.defaultSeason}&league=${leagueId}`,
+			{
+				method: "GET",
+				headers: {
+					"x-rapidapi-host": config.host,
+					"x-rapidapi-key": config.key,
+				},
+			}
 		);
 		const getTopAssists = fetch(
-			`https://v3.football.api-sports.io/players/topassists?season=${config.defaultSeason}&league=${leagueId}`
+			`https://v3.football.api-sports.io/players/topassists?season=${config.defaultSeason}&league=${leagueId}`,
+			{
+				method: "GET",
+				headers: {
+					"x-rapidapi-host": config.host,
+					"x-rapidapi-key": config.key,
+				},
+			}
 		);
 		const getTopYellowCards = fetch(
-			`https://v3.football.api-sports.io/players/topyellowcards?season=${config.defaultSeason}&league=${leagueId}`
+			`https://v3.football.api-sports.io/players/topyellowcards?season=${config.defaultSeason}&league=${leagueId}`,
+			{
+				method: "GET",
+				headers: {
+					"x-rapidapi-host": config.host,
+					"x-rapidapi-key": config.key,
+				},
+			}
 		);
 		const getTopRedCards = fetch(
-			`https://v3.football.api-sports.io/players/topredcards?season=${config.defaultSeason}&league=${leagueId}`
+			`https://v3.football.api-sports.io/players/topredcards?season=${config.defaultSeason}&league=${leagueId}`,
+			{
+				method: "GET",
+				headers: {
+					"x-rapidapi-host": config.host,
+					"x-rapidapi-key": config.key,
+				},
+			}
 		);
 
 		let [topScorers, topAssists, topYellowCards, topRedCards] = await Promise.all([
@@ -38,11 +66,12 @@ export const fetchLeagueStats = createAsyncThunk(
 			getTopRedCards,
 		]);
 
-		const data = res.map(async call => {
-			const resolved = await call.json();
-			return resolved.response;
-		});
-		return data;
+		topScorers = await topScorers.json();
+		topAssists = await topAssists.json();
+		topYellowCards = await topYellowCards.json();
+		topRedCards = await topRedCards.json();
+
+		return [topScorers, topAssists, topYellowCards, topRedCards];
 	}
 );
 
