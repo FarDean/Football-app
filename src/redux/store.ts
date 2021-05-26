@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import leagueReducer from "./leagueSlice";
 import teamReducer from "./teamDetailSlice";
-// import statReducer from "./statsSlice";
+import leagueStatsReducer from "./leagueStatsSlice";
 import liveScoreReducer from "./liveScoreSlice";
 import standingReducer from "./standingSlice";
 import scheduleReducer from "./scheduleSlice";
@@ -11,7 +11,7 @@ export const store = configureStore({
 	reducer: {
 		league: leagueReducer,
 		team: teamReducer,
-		// stat: statReducer,
+		leagueStats: leagueStatsReducer,
 		livescore: liveScoreReducer,
 		standing: standingReducer,
 		schedule: scheduleReducer,
