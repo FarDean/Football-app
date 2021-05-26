@@ -4,9 +4,9 @@ import { Hero } from "./utils/Hero";
 import styles from "./../styles/LeagueWrapper.module.css";
 import { Statnding } from "./Standing";
 import { Fixtures } from "./Fixtures";
-import { Teams } from "./Teams";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
+import { LeagueStats } from "./LeagueStats";
 
 export const League: React.FC = (): JSX.Element => {
 	let { path, url } = useRouteMatch();
@@ -37,8 +37,8 @@ export const League: React.FC = (): JSX.Element => {
 						<div className={getClass("fixtures")}>
 							<Link to={`${url}/fixtures`}>Fixtures</Link>
 						</div>
-						<div className={getClass("teams")}>
-							<Link to={`${url}/teams`}>Teams</Link>
+						<div className={getClass("stats")}>
+							<Link to={`${url}/stats`}>Stats</Link>
 						</div>
 					</div>
 					<Switch>
@@ -48,7 +48,9 @@ export const League: React.FC = (): JSX.Element => {
 						<Route path={`${path}/fixtures`}>
 							<Fixtures leagueId={league.league.id} />
 						</Route>
-						<Route path={`${path}/teams`} component={Teams} />
+						<Route path={`${path}/stats`}>
+							<LeagueStats />
+						</Route>
 					</Switch>
 				</main>
 			</>
