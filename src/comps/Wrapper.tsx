@@ -21,8 +21,6 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 		}
 	}, [dispatch, leaguesStatus]);
 
-	console.log(leagues);
-
 	if (leaguesStatus === "loading") return <Loader />;
 
 	if (leaguesStatus === "failed" || leagues[0] === undefined) return <Error />;
