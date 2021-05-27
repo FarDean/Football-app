@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from "./../redux/hooks";
 import { fetchLeagueStats } from "./../redux/leagueStatsSlice";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
+import styles from "./../styles/LeagueStats.module.css";
 
 interface Props {
 	leagueId: string | number;
@@ -32,21 +33,21 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 
 	if (leagueStatsStatus === "succeeded" && leagueStats.length > 0)
 		return (
-			<div>
-				<div>
-					<h2>Top Scorers</h2>
+			<div className={styles.container}>
+				<div className={styles.stats}>
+					<h2 className={styles.title}>Top Scorers</h2>
 					{topScorers.map((player: any, i: number) => (
-						<div key={i}>
-							<div>
-								<div>
+						<div key={i} className={styles.wrapper}>
+							<div className={styles.detail}>
+								<div className={styles.player}>
 									<img src={player.player.photo} alt="" />
-									{player.player.name}
+									<p>{player.player.name}</p>
 								</div>
 								<div>{player.statistics[0].goals.total}</div>
 							</div>
-							<div>
+							<div className={styles.team}>
 								<img src={player.statistics[0].team.logo} alt="" />
-								{player.statistics[0].team.name}
+								<div>{player.statistics[0].team.name}</div>
 							</div>
 						</div>
 					))}

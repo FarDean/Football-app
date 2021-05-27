@@ -1,0 +1,60 @@
+.stats {
+	border-radius: 16px;
+	border: 1px solid rgb(243, 243, 255);
+	padding: 0.4em;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.wrapper {
+	border-bottom: 0.5px solid rgb(238, 238, 238);
+	padding: 0.5em;
+}
+
+.title {
+	padding: 0.5em;
+	border-radius: 16px;
+	color: gray;
+	font-size: 1rem;
+}
+
+.detail {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.player {
+	display: flex;
+	align-items: center;
+	font-size: 0.9rem;
+}
+
+.player p {
+	margin-left: 9px;
+}
+
+.player img {
+	border: 0.5px dashed orangered;
+	width: 48px;
+	height: 48px;
+
+	border-radius: 26px;
+}
+
+.team {
+	padding: 0.2em 0 0.8em 5em;
+	display: flex;
+	align-items: center;
+	font-size: 0.5rem;
+}
+
+.team img {
+	width: 34px;
+	height: 34px;
+	margin-right: 3px;
+}
