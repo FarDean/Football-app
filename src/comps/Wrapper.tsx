@@ -10,6 +10,7 @@ import slugify from "slugify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { Container } from "./utils/Container";
+import logo from "./../assets/logo.png";
 
 export const Wrapper: React.FC = React.memo((): JSX.Element => {
 	const dispatch = useAppDispatch();
@@ -44,10 +45,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 							<Link to="/livescores">Live Scores</Link>
 						</div>
 						<div className={styles.center}>
-							<img
-								src="https://image.freepik.com/free-vector/king-football-logo_21010-8.jpg"
-								alt=""
-							/>
+							<img src={logo} alt="logo" />
 						</div>
 						<div className={styles.right}>
 							<div className={styles.navItem}>
