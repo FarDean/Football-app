@@ -40,7 +40,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 					<nav className={styles.nav}>
 						<div className={styles.left}>
 							<div className={styles.pulse}></div>
-							<Link to="/">Live Scores</Link>
+							<Link to="/livescores">Live Scores</Link>
 						</div>
 						<div className={styles.center}>
 							<img
@@ -49,6 +49,9 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 							/>
 						</div>
 						<div className={styles.right}>
+							<div className={styles.navItem}>
+								<Link to="/">Home</Link>
+							</div>
 							<div className={styles.navItem} onClick={toggleDropdown} key="leagues">
 								<p>Leagues</p>
 								{dropown ? (
@@ -85,7 +88,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 									))}
 								</div>
 							</div>
-							<div className={styles.navItem}>Home</div>
+
 							<div className={styles.navItem}>Transfers</div>
 						</div>
 					</nav>

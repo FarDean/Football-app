@@ -21,7 +21,7 @@ function App() {
 	// }, []);
 	// console.log(teams);
 
-	return <LiveScores />;
+	return <h1>Home Page</h1>;
 }
 
 export default App;
