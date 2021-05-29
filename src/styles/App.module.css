@@ -1,0 +1,74 @@
+.hero {
+	background-image: url("./../assets/hero.jpg");
+	height: 95vh;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	color: #fff;
+	padding: 0 7em;
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.hero::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.title {
+	z-index: 1;
+	text-align: center;
+}
+
+.title div {
+	display: flex;
+}
+
+.title h1 {
+	font-size: 3.5rem;
+}
+
+.title h2 {
+	font-size: 2rem;
+	color: orangered;
+	text-decoration: dotted;
+}
+
+.title h3 {
+	margin-top: 5em;
+}
+
+.scroll {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	color: #fff;
+	margin-bottom: 10px;
+	font-size: 3rem;
+	animation-duration: 2s;
+	animation-name: scroll;
+	animation-iteration-count: infinite;
+	cursor: pointer;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateY(5px);
+	}
+
+	50% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(-5px);
+	}
+}

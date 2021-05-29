@@ -9,6 +9,7 @@ import React from "react";
 import slugify from "slugify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "./utils/Container";
 
 export const Wrapper: React.FC = React.memo((): JSX.Element => {
 	const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 
 	if (leaguesStatus === "succeeded")
 		return (
-			<>
+			<Container>
 				<header>
 					<nav className={styles.nav}>
 						<div className={styles.left}>
@@ -93,7 +94,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 						</div>
 					</nav>
 				</header>
-			</>
+			</Container>
 		);
 
 	return <Error text={error} />;
