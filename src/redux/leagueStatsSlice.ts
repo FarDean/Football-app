@@ -4,13 +4,23 @@ import { config } from "./../config";
 // Types
 interface LeagueStatsState {
 	status: "idle" | "loading" | "succeeded" | "failed";
-	leagueStats: any[];
+	leagueStats: {
+		topScorers: any[];
+		topAssists: any[];
+		topYellowCards: any[];
+		topRedCards: any[];
+	};
 	error: null | undefined | string;
 }
 
 const initialState: LeagueStatsState = {
 	status: "idle",
-	leagueStats: [],
+	leagueStats: {
+		topScorers: [],
+		topAssists: [],
+		topYellowCards: [],
+		topRedCards: [],
+	},
 	error: null,
 };
 
@@ -85,8 +95,12 @@ export const leagueStatsSlice = createSlice({
 			state.status = "loading";
 		});
 		builder.addCase(fetchLeagueStats.fulfilled, (state, action) => {
+			const payload = action.payload as any;
 			state.status = "succeeded";
-			state.leagueStats = action.payload;
+			state.leagueStats.topScorers = payload[0].response;
+			state.leagueStats.topAssists = payload[1].response;
+			state.leagueStats.topYellowCards = payload[2].response;
+			state.leagueStats.topRedCards = payload[3].response;
 		});
 		builder.addCase(fetchLeagueStats.rejected, (state, action) => {
 			state.status = "failed";

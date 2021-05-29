@@ -12,10 +12,12 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 	const dispatch = useAppDispatch();
 
 	const leagueStats = useAppSelector(state => state.leagueStats.leagueStats);
-	const topScorers = useAppSelector(state => state.leagueStats.leagueStats[0].response);
-	const topAssists = useAppSelector(state => state.leagueStats.leagueStats[1].response);
-	const topYellowCards = useAppSelector(state => state.leagueStats.leagueStats[2].response);
-	const topRedCards = useAppSelector(state => state.leagueStats.leagueStats[3].response);
+	const topScorers = useAppSelector(state =>
+		state.leagueStats.leagueStats.topScorers.slice(0, 5)
+	);
+	const topAssists = useAppSelector(state => state.leagueStats.leagueStats);
+	const topYellowCards = useAppSelector(state => state.leagueStats.leagueStats.topYellowCards);
+	const topRedCards = useAppSelector(state => state.leagueStats.leagueStats.topRedCards);
 	const leagueStatsStatus = useAppSelector(state => state.leagueStats.status);
 	const error = useAppSelector(state => state.leagueStats.error);
 
@@ -25,13 +27,13 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 		}
 	}, [dispatch, leagueStatsStatus, leagueId]);
 
-	console.log(topScorers);
+	console.log(leagueStats);
 
 	if (leagueStatsStatus === "loading") return <Loader />;
 
 	if (leagueStatsStatus === "failed") return <Error text={error} />;
 
-	if (leagueStatsStatus === "succeeded" && leagueStats.length > 0)
+	if (leagueStatsStatus === "succeeded" && leagueStats)
 		return (
 			<div className={styles.container}>
 				<div className={styles.stats}>
