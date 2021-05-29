@@ -15,19 +15,23 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 	const topScorers = useAppSelector(state =>
 		state.leagueStats.leagueStats.topScorers.slice(0, 5)
 	);
-	const topAssists = useAppSelector(state => state.leagueStats.leagueStats);
-	const topYellowCards = useAppSelector(state => state.leagueStats.leagueStats.topYellowCards);
-	const topRedCards = useAppSelector(state => state.leagueStats.leagueStats.topRedCards);
+	const topAssists = useAppSelector(state =>
+		state.leagueStats.leagueStats.topAssists.slice(0, 5)
+	);
+	const topYellowCards = useAppSelector(state =>
+		state.leagueStats.leagueStats.topYellowCards.slice(0, 5)
+	);
+	const topRedCards = useAppSelector(state =>
+		state.leagueStats.leagueStats.topRedCards.slice(0, 5)
+	);
 	const leagueStatsStatus = useAppSelector(state => state.leagueStats.status);
 	const error = useAppSelector(state => state.leagueStats.error);
 
 	useEffect(() => {
-		if (leagueStatsStatus === "idle") {
-			dispatch(fetchLeagueStats(leagueId));
-		}
-	}, [dispatch, leagueStatsStatus, leagueId]);
+		dispatch(fetchLeagueStats(leagueId));
+	}, [dispatch, leagueId]);
 
-	console.log(leagueStats);
+	console.log(topYellowCards);
 
 	if (leagueStatsStatus === "loading") return <Loader />;
 
@@ -46,6 +50,60 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 									<p>{player.player.name}</p>
 								</div>
 								<div>{player.statistics[0].goals.total}</div>
+							</div>
+							<div className={styles.team}>
+								<img src={player.statistics[0].team.logo} alt="" />
+								<div>{player.statistics[0].team.name}</div>
+							</div>
+						</div>
+					))}
+				</div>
+				<div className={styles.stats}>
+					<h2 className={styles.title}>Top Assists</h2>
+					{topAssists.map((player: any, i: number) => (
+						<div key={i} className={styles.wrapper}>
+							<div className={styles.detail}>
+								<div className={styles.player}>
+									<img src={player.player.photo} alt="" />
+									<p>{player.player.name}</p>
+								</div>
+								<div>{player.statistics[0].goals.assists}</div>
+							</div>
+							<div className={styles.team}>
+								<img src={player.statistics[0].team.logo} alt="" />
+								<div>{player.statistics[0].team.name}</div>
+							</div>
+						</div>
+					))}
+				</div>
+				<div className={styles.stats}>
+					<h2 className={styles.title}>Top Yellow Cards</h2>
+					{topYellowCards.map((player: any, i: number) => (
+						<div key={i} className={styles.wrapper}>
+							<div className={styles.detail}>
+								<div className={styles.player}>
+									<img src={player.player.photo} alt="" />
+									<p>{player.player.name}</p>
+								</div>
+								<div>{player.statistics[0].cards.yellow}</div>
+							</div>
+							<div className={styles.team}>
+								<img src={player.statistics[0].team.logo} alt="" />
+								<div>{player.statistics[0].team.name}</div>
+							</div>
+						</div>
+					))}
+				</div>
+				<div className={styles.stats}>
+					<h2 className={styles.title}>Top Red Cards</h2>
+					{topRedCards.map((player: any, i: number) => (
+						<div key={i} className={styles.wrapper}>
+							<div className={styles.detail}>
+								<div className={styles.player}>
+									<img src={player.player.photo} alt="" />
+									<p>{player.player.name}</p>
+								</div>
+								<div>{player.statistics[0].cards.red}</div>
 							</div>
 							<div className={styles.team}>
 								<img src={player.statistics[0].team.logo} alt="" />
