@@ -30,20 +30,20 @@ export interface League {
 }
 
 // Thunk
-export const fetchLeagues = createAsyncThunk(
-	"leagues/fetchLeagues",
-	async (season: string = config.defaultSeason) => {
-		const res = await fetch(`https://v3.football.api-sports.io/leagues?season=${season}`, {
+export const fetchLeagues = createAsyncThunk("leagues/fetchLeagues", async () => {
+	const res = await fetch(
+		`https://v3.football.api-sports.io/leagues?season=${config.defaultSeason}`,
+		{
 			method: "GET",
 			headers: {
 				"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
 				"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
 			},
-		});
-		const data = await res.json();
-		return data.response;
-	}
-);
+		}
+	);
+	const data = await res.json();
+	return data.response;
+});
 
 // slice
 export const leagueSlice = createSlice({
