@@ -3,6 +3,7 @@ import App from "./App";
 import { Fixture } from "./comps/Fixture";
 import { League } from "./comps/League";
 import { LiveScores } from "./comps/LiveScores";
+import { TeamDetail } from "./comps/TeamDetail";
 import { Loader } from "./comps/utils/Loader";
 import { ScrollToTop } from "./comps/utils/ScrollToTop";
 import { Wrapper } from "./comps/Wrapper";
@@ -28,6 +29,9 @@ export const MainRouter = () => {
 				</Route>
 				<Route path="/fixture/:fixtureId">
 					<Fixture />
+				</Route>
+				<Route path="/team/:teamName">
+					<TeamDetail />
 				</Route>
 			</Switch>
 		</Router>
