@@ -44,10 +44,10 @@ export const Fixtures: React.FC<Props> = ({ leagueId }): JSX.Element => {
 	);
 
 	if (scheduleStatus === "loading") return <Loader />;
+	if (scheduleStatus === "failed") return <Error text={error} />;
 	if (scheduleStatus === "succeeded")
 		return (
 			<div className={styles.parent}>
-				{error && <Error text={error} />}
 				{schedule.map((fixture, i) => (
 					<Link key={i} to={`/fixture/${fixture.fixture.id}`} className={styles.flexitem}>
 						<div className={styles.teams1}>
