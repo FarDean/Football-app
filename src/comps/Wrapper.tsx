@@ -88,7 +88,7 @@ export const Wrapper: React.FC = React.memo((): JSX.Element => {
 								</div>
 							</div>
 
-							<div className={styles.navItem}>Transfers</div>
+							{/* <div className={styles.navItem}>Transfers</div> */}
 						</div>
 					</nav>
 				</header>
