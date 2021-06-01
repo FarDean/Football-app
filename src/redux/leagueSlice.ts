@@ -32,7 +32,7 @@ export interface League {
 // Thunk
 export const fetchLeagues = createAsyncThunk("leagues/fetchLeagues", async () => {
 	const res = await fetch(
-		`https://v3.football.api-sports.io/leagues?season=${config.defaultSeason}`,
+		`https://v3.football.api-sports.io/leagues?season=${process.env.REACT_APP_DEFUALT_SEASON}`,
 		{
 			method: "GET",
 			headers: {

@@ -23,7 +23,7 @@ export const fetchTeam = createAsyncThunk(
 	"team/fetchTeam",
 	async ({ leagueId, teamId }: Params) => {
 		const res = await fetch(
-			`https://v3.football.api-sports.io/teams/statistics?league=${leagueId}&team=${teamId}&season=${config.defaultSeason}`,
+			`https://v3.football.api-sports.io/teams/statistics?league=${leagueId}&team=${teamId}&season=${process.env.REACT_APP_DEFUALT_SEASON}`,
 			{
 				method: "GET",
 				headers: {

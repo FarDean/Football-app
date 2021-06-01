@@ -19,7 +19,7 @@ export const fetchStanding = createAsyncThunk(
 	"standing/fetchStanding",
 	async (leagueId: string | number) => {
 		const res = await fetch(
-			`https://v3.football.api-sports.io/standings?league=${leagueId}&season=${config.defaultSeason}`,
+			`https://v3.football.api-sports.io/standings?league=${leagueId}&season=${process.env.REACT_APP_DEFUALT_SEASON}`,
 			{
 				method: "GET",
 				headers: {

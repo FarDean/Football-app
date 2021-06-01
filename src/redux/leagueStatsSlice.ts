@@ -29,7 +29,7 @@ export const fetchLeagueStats = createAsyncThunk(
 	"leagueStats/fetchLeagueStats",
 	async (leagueId: string | number) => {
 		const getTopScorers = fetch(
-			`https://v3.football.api-sports.io/players/topscorers?season=${config.defaultSeason}&league=${leagueId}`,
+			`https://v3.football.api-sports.io/players/topscorers?season=${process.env.REACT_APP_DEFUALT_SEASON}&league=${leagueId}`,
 			{
 				method: "GET",
 				headers: {
@@ -39,7 +39,7 @@ export const fetchLeagueStats = createAsyncThunk(
 			}
 		);
 		const getTopAssists = fetch(
-			`https://v3.football.api-sports.io/players/topassists?season=${config.defaultSeason}&league=${leagueId}`,
+			`https://v3.football.api-sports.io/players/topassists?season=${process.env.REACT_APP_DEFUALT_SEASON}&league=${leagueId}`,
 			{
 				method: "GET",
 				headers: {
@@ -49,7 +49,7 @@ export const fetchLeagueStats = createAsyncThunk(
 			}
 		);
 		const getTopYellowCards = fetch(
-			`https://v3.football.api-sports.io/players/topyellowcards?season=${config.defaultSeason}&league=${leagueId}`,
+			`https://v3.football.api-sports.io/players/topyellowcards?season=${process.env.REACT_APP_DEFUALT_SEASON}&league=${leagueId}`,
 			{
 				method: "GET",
 				headers: {
@@ -59,7 +59,7 @@ export const fetchLeagueStats = createAsyncThunk(
 			}
 		);
 		const getTopRedCards = fetch(
-			`https://v3.football.api-sports.io/players/topredcards?season=${config.defaultSeason}&league=${leagueId}`,
+			`https://v3.football.api-sports.io/players/topredcards?season=${process.env.REACT_APP_DEFUALT_SEASON}&league=${leagueId}`,
 			{
 				method: "GET",
 				headers: {

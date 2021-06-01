@@ -25,7 +25,7 @@ export const fetchSchedule = createAsyncThunk(
 	"schedule/fetchSchedule",
 	async ({ leagueId, lastWeek, nextWeek }: Params) => {
 		const res = await fetch(
-			`https://v3.football.api-sports.io/fixtures?league=${leagueId}&season=${config.defaultSeason}&from=${lastWeek}&to=${nextWeek}`,
+			`https://v3.football.api-sports.io/fixtures?league=${leagueId}&season=${process.env.REACT_APP_DEFUALT_SEASON}&from=${lastWeek}&to=${nextWeek}`,
 			{
 				method: "GET",
 				headers: {
