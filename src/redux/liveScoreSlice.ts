@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { config } from "../config";
 
 // Types
 interface LiveScoresState {
@@ -19,8 +18,8 @@ export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", as
 	const res = await fetch("https://v3.football.api-sports.io/fixtures?live=39-135-140-78", {
 		method: "GET",
 		headers: {
-			"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
-			"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
+			"x-rapidapi-host": process.env.REACT_APP_HOST!,
+			"x-rapidapi-key": process.env.REACT_APP_KEY!,
 		},
 	});
 	const data = await res.json();

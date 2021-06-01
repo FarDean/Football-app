@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { config } from "../config";
 
 // Types
 interface ScheduleState {
@@ -29,8 +28,8 @@ export const fetchSchedule = createAsyncThunk(
 			{
 				method: "GET",
 				headers: {
-					"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
-					"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
+					"x-rapidapi-host": process.env.REACT_APP_HOST!,
+					"x-rapidapi-key": process.env.REACT_APP_KEY!,
 				},
 			}
 		);

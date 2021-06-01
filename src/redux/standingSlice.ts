@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { config } from "../config";
 
 // Thunk
 interface StandingState {
@@ -23,8 +22,8 @@ export const fetchStanding = createAsyncThunk(
 			{
 				method: "GET",
 				headers: {
-					"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
-					"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
+					"x-rapidapi-host": process.env.REACT_APP_HOST!,
+					"x-rapidapi-key": process.env.REACT_APP_KEY!,
 				},
 			}
 		);
