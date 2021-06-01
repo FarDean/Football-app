@@ -27,8 +27,8 @@ export const fetchTeam = createAsyncThunk(
 			{
 				method: "GET",
 				headers: {
-					"x-rapidapi-host": config.host,
-					"x-rapidapi-key": config.key,
+					"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
+					"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
 				},
 			}
 		);

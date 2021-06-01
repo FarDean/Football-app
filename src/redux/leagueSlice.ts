@@ -36,8 +36,8 @@ export const fetchLeagues = createAsyncThunk(
 		const res = await fetch(`https://v3.football.api-sports.io/leagues?season=${season}`, {
 			method: "GET",
 			headers: {
-				"x-rapidapi-host": config.host,
-				"x-rapidapi-key": config.key,
+				"x-rapidapi-host": config.host || process.env.REACT_APP_HOST!,
+				"x-rapidapi-key": config.key || process.env.REACT_APP_KEY!,
 			},
 		});
 		const data = await res.json();
