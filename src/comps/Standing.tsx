@@ -5,7 +5,7 @@ import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 import slugify from "slugify";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const icons: { [key: string]: any } = {
 	W: <i className={`fas fa-check-circle ${styles.win}`}></i>,
@@ -23,6 +23,8 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 	const standing = useAppSelector(state => state.standing.standing);
 	const standingStatus = useAppSelector(state => state.standing.status);
 	const error = useAppSelector(state => state.standing.error);
+
+	const { leagueName } = useParams<{ leagueName: string }>();
 
 	useEffect(() => {
 		dispatch(fetchStanding(leagueId));
@@ -49,7 +51,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 					{standing[0].league.standings[0].map((team: any, i: number) => (
 						<>
 							<Link
-								to={`/team/${slugify(team.team.name)}`}
+								to={`/${leagueName}/team/${slugify(team.team.name)}`}
 								className={styles.tbrow}
 								key={i}
 							>

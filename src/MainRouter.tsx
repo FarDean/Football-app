@@ -30,7 +30,7 @@ export const MainRouter = () => {
 				<Route path="/fixture/:fixtureId">
 					<Fixture />
 				</Route>
-				<Route path="/team/:teamName">
+				<Route path="/:leagueName/team/:teamName">
 					<TeamDetail />
 				</Route>
 			</Switch>

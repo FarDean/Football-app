@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import leagueReducer from "./leagueSlice";
-import teamReducer from "./teamDetailSlice";
+import teamDeatailReducer from "./teamDetailSlice";
 import leagueStatsReducer from "./leagueStatsSlice";
 import liveScoreReducer from "./liveScoreSlice";
 import standingReducer from "./standingSlice";
@@ -10,7 +10,7 @@ import singleFixtureReducer from "./singleFixtureSlice";
 export const store = configureStore({
 	reducer: {
 		league: leagueReducer,
-		team: teamReducer,
+		team: teamDeatailReducer,
 		leagueStats: leagueStatsReducer,
 		livescore: liveScoreReducer,
 		standing: standingReducer,
