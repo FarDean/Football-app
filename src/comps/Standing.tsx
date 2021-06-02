@@ -5,7 +5,7 @@ import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
 import slugify from "slugify";
-import { Link, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const icons: { [key: string]: any } = {
 	W: <i className={`fas fa-check-circle ${styles.win}`}></i>,
@@ -18,6 +18,8 @@ interface Props {
 }
 
 export const Statnding: React.FC<Props> = ({ leagueId }) => {
+	const history = useHistory();
+
 	const dispatch = useAppDispatch();
 	// selectors
 	const standing = useAppSelector(state => state.standing.standing);
@@ -51,10 +53,14 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 					</tr>
 
 					{standing[0].league.standings[0].map((team: any, i: number) => (
-						<Link
-							to={`/${leagueName}/team/${slugify(team.team.name)}`}
+						<tr
+							// to={`/${leagueName}/team/${slugify(team.team.name)}`}
 							className={styles.tbrow}
 							key={i}
+							role="link"
+							onClick={() =>
+								history.push(`/${leagueName}/team/${slugify(team.team.name)}`)
+							}
 						>
 							<td key={"td1"} className={styles.flex}>
 								<span className={styles.span}>{team.rank}</span>
@@ -76,7 +82,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 									</span>
 								))}
 							</td>
-						</Link>
+						</tr>
 					))}
 				</tbody>
 			</table>
