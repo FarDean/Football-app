@@ -36,47 +36,47 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 			<table className={styles.table}>
 				<tbody>
 					<tr className={styles.head}>
-						<td>Club</td>
-						<td>MP</td>
-						<td>W</td>
-						<td>D</td>
-						<td>L</td>
-						<td>GF</td>
-						<td>GA</td>
-						<td>GD</td>
-						<td>Pts</td>
-						<td className={styles.last5}>Last 5</td>
+						<td key={"Club"}>Club</td>
+						<td key={"MP"}>MP</td>
+						<td key={"W"}>W</td>
+						<td key={"D"}>D</td>
+						<td key={"L"}>L</td>
+						<td key={"GF"}>GF</td>
+						<td key={"GA"}>GA</td>
+						<td key={"GD"}>GD</td>
+						<td key={"Pts"}>Pts</td>
+						<td key={"Last 5"} className={styles.last5}>
+							Last 5
+						</td>
 					</tr>
 
 					{standing[0].league.standings[0].map((team: any, i: number) => (
-						<>
-							<Link
-								to={`/${leagueName}/team/${slugify(team.team.name)}`}
-								className={styles.tbrow}
-								key={i}
-							>
-								<td className={styles.flex}>
-									<span className={styles.span}>{team.rank}</span>
-									<img className={styles.img} src={team.team.logo} alt="" />{" "}
-									<span>{team.team.name}</span>
-								</td>
-								<td>{team.all.played}</td>
-								<td>{team.all.win}</td>
-								<td>{team.all.draw}</td>
-								<td>{team.all.lose}</td>
-								<td>{team.all.goals.for}</td>
-								<td>{team.all.goals.against}</td>
-								<td>{team.goalsDiff}</td>
-								<td>{team.points}</td>
-								<td className={styles.last5}>
-									{[...team.form].map((str, i) => (
-										<span key={i} className={styles.form}>
-											{icons[str]}
-										</span>
-									))}
-								</td>
-							</Link>
-						</>
+						<Link
+							to={`/${leagueName}/team/${slugify(team.team.name)}`}
+							className={styles.tbrow}
+							key={i}
+						>
+							<td key={"td1"} className={styles.flex}>
+								<span className={styles.span}>{team.rank}</span>
+								<img className={styles.img} src={team.team.logo} alt="" />{" "}
+								<span>{team.team.name}</span>
+							</td>
+							<td key={"td2"}>{team.all.played}</td>
+							<td key={"td3"}>{team.all.win}</td>
+							<td key={"td4"}>{team.all.draw}</td>
+							<td key={"td5"}>{team.all.lose}</td>
+							<td key={"td6"}>{team.all.goals.for}</td>
+							<td key={"td7"}>{team.all.goals.against}</td>
+							<td key={"td8"}>{team.goalsDiff}</td>
+							<td key={"td9"}>{team.points}</td>
+							<td key={"td10"} className={styles.last5}>
+								{[...team.form].map((str, i) => (
+									<span key={i} className={styles.form}>
+										{icons[str]}
+									</span>
+								))}
+							</td>
+						</Link>
 					))}
 				</tbody>
 			</table>
