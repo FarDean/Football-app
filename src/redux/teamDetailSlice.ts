@@ -7,8 +7,8 @@ interface TeamState {
 	error: string | undefined | null;
 }
 interface Params {
-	leagueId: number;
-	teamId: number;
+	leagueId: number | string;
+	teamId: number | string;
 }
 
 // Inital state
