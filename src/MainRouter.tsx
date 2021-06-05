@@ -4,6 +4,7 @@ import { Fixture } from "./comps/Fixture";
 import { League } from "./comps/League";
 import { LiveScores } from "./comps/LiveScores";
 import { TeamDetail } from "./comps/TeamDetail";
+import { Error } from "./comps/utils/Error";
 import { Loader } from "./comps/utils/Loader";
 import { ScrollToTop } from "./comps/utils/ScrollToTop";
 import { Wrapper } from "./comps/Wrapper";
@@ -12,6 +13,7 @@ export const MainRouter = () => {
 	const leaguesStatus = useAppSelector(state => state.league.status);
 
 	if (leaguesStatus === "loading") return <Loader />;
+	if (leaguesStatus === "failed") return <Error />;
 
 	return (
 		<Router>
