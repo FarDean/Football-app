@@ -31,6 +31,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 	useEffect(() => {
 		dispatch(fetchStanding(leagueId));
 	}, [dispatch, leagueId]);
+	console.log(standing);
 
 	if (standingStatus === "loading") return <Loader />;
 	if (standingStatus === "succeeded")
@@ -58,9 +59,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 							className={styles.tbrow}
 							key={i}
 							role="link"
-							onClick={() =>
-								history.push(`/${leagueName}/team/${slugify(team.team.name)}`)
-							}
+							onClick={() => history.push(`/${leagueName}/teams/${team.team.id}`)}
 						>
 							<td key={"td1"} className={styles.flex}>
 								<span className={styles.span}>{team.rank}</span>

@@ -31,8 +31,6 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 		dispatch(fetchLeagueStats(leagueId));
 	}, [dispatch, leagueId]);
 
-	console.log(topYellowCards);
-
 	if (leagueStatsStatus === "loading") return <Loader />;
 
 	if (leagueStatsStatus === "failed") return <Error text={error} />;
