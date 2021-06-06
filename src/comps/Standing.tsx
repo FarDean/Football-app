@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 import { Loader } from "./utils/Loader";
 import { Error } from "./utils/Error";
 import styles from "./../styles/Standing.module.css";
-import slugify from "slugify";
 import { useHistory, useParams } from "react-router-dom";
 
 const icons: { [key: string]: any } = {
