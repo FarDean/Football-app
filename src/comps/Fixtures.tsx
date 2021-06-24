@@ -48,42 +48,60 @@ export const Fixtures: React.FC<Props> = ({ leagueId }): JSX.Element => {
 	if (scheduleStatus === "succeeded")
 		return (
 			<div className={styles.parent}>
-				{schedule.map((fixture, i) => (
-					<Link key={i} to={`/fixture/${fixture.fixture.id}`} className={styles.flexitem}>
-						<div className={styles.teams1}>
-							<div className={styles.team}>
-								<img className={styles.img} src={fixture.teams.home.logo} alt="" />
-								{fixture.teams.home.name}
+				{schedule.length > 0 ? (
+					schedule.map((fixture, i) => (
+						<Link
+							key={i}
+							to={`/fixture/${fixture.fixture.id}`}
+							className={styles.flexitem}
+						>
+							<div className={styles.teams1}>
+								<div className={styles.team}>
+									<img
+										className={styles.img}
+										src={fixture.teams.home.logo}
+										alt=""
+									/>
+									{fixture.teams.home.name}
+								</div>
+								<div>{fixture.goals.home ?? ` `}</div>
 							</div>
-							<div>{fixture.goals.home ?? ` `}</div>
-						</div>
-						<div className={styles.teams2}>
-							<div className={styles.team}>
-								<img className={styles.img} src={fixture.teams.away.logo} alt="" />
-								{fixture.teams.away.name}
+							<div className={styles.teams2}>
+								<div className={styles.team}>
+									<img
+										className={styles.img}
+										src={fixture.teams.away.logo}
+										alt=""
+									/>
+									{fixture.teams.away.name}
+								</div>
+								<div>{fixture.goals.away ?? ` `}</div>
 							</div>
-							<div>{fixture.goals.away ?? ` `}</div>
-						</div>
-						<div className={styles.date}>
-							{fixture.fixture.status.long === "Match Finished" ||
-							fixture.fixture.status.long === "Not Started" ? (
-								<div>{fixture.fixture.status.long}</div>
-							) : fixture.fixture.status.long === "Halftime" ? (
-								<div>
+							<div className={styles.date}>
+								{fixture.fixture.status.long === "Match Finished" ||
+								fixture.fixture.status.long === "Not Started" ? (
 									<div>{fixture.fixture.status.long}</div>
-									{loader}
-								</div>
-							) : (
+								) : fixture.fixture.status.long === "Halftime" ? (
+									<div>
+										<div>{fixture.fixture.status.long}</div>
+										{loader}
+									</div>
+								) : (
+									<div>
+										{fixture.fixture.status.elapsed}
+										<span>`</span>
+										{loader}
+									</div>
+								)}
 								<div>
-									{fixture.fixture.status.elapsed}
-									<span>`</span>
-									{loader}
+									{formatRelative(new Date(fixture.fixture.date), new Date())}
 								</div>
-							)}
-							<div>{formatRelative(new Date(fixture.fixture.date), new Date())}</div>
-						</div>
-					</Link>
-				))}
+							</div>
+						</Link>
+					))
+				) : (
+					<div className={styles.nofixture}>No fixture is available!</div>
+				)}
 			</div>
 		);
 	return <Loader />;

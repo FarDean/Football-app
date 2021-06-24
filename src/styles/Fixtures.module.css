@@ -117,3 +117,10 @@
 		left: calc(100% - 10px);
 	}
 }
+
+.nofixture {
+	text-align: center;
+	padding: 20px 0;
+	color: rgb(155, 155, 155);
+	width: 100%;
+}
