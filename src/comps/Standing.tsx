@@ -30,7 +30,6 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 	useEffect(() => {
 		dispatch(fetchStanding(leagueId));
 	}, [dispatch, leagueId]);
-	console.log(standing);
 
 	if (standingStatus === "loading") return <Loader />;
 	if (standingStatus === "succeeded")
