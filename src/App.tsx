@@ -20,9 +20,9 @@ function App() {
 					</h3>
 				</div>
 			</div>
-			<div className={styles.scroll}>
+			{/* <div className={styles.scroll}>
 				<FontAwesomeIcon icon={faAngleDoubleDown} />
-			</div>
+			</div> */}
 		</div>
 	);
 }
