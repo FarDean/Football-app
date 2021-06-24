@@ -9,7 +9,9 @@ function App() {
 			<div className={styles.hero}>
 				<div className={styles.title}>
 					<div>
-						<img src={ballImg} alt="Ball" />
+						<div className={styles.ballImg}>
+							<img src={ballImg} alt="Ball" />
+						</div>
 						<h1>Football App made By</h1>
 					</div>
 					<h2>FarDean</h2>
