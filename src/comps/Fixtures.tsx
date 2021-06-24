@@ -29,7 +29,7 @@ export const Fixtures: React.FC<Props> = ({ leagueId }): JSX.Element => {
 		dispatch(fetchSchedule({ leagueId, lastWeek, nextWeek }));
 	}, [dispatch, leagueId, lastWeek, nextWeek]);
 
-	// comps
+	// live loader component
 	const loader = (
 		<div className={styles.container}>
 			<div className={styles.loader}>
