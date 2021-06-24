@@ -36,7 +36,9 @@ export const LiveScores = () => {
 			<Hero text="Live Scores" />
 			<div>
 				{liveScores.length === 0 && (
-					<Error text="There are no matches being played currently!" />
+					<div className={styles.nomatch}>
+						There are no matches being played currently!
+					</div>
 				)}
 				{liveScores.map((score, i) => (
 					<Link to={`/fixture/${score.fixture.id}`} className={styles.parent} key={i}>

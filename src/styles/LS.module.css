@@ -127,3 +127,10 @@
 		left: calc(100% - 10px);
 	}
 }
+
+.nomatch {
+	text-align: center;
+	padding: 20px 0;
+	color: rgb(155, 155, 155);
+	width: 100%;
+}
