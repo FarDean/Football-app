@@ -52,6 +52,12 @@
 	justify-content: center;
 }
 
+@media (max-width: 555px) {
+	.last5 {
+		display: none;
+	}
+}
+
 .lose {
 	color: rgb(253, 48, 48);
 }
