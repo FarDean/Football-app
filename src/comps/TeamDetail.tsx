@@ -49,6 +49,30 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 								<th>Total</th>
 							</tr>
 							<tr>
+								<th>Average Goals Scored</th>
+								<td>{team.goals.for.average.home}</td>
+								<td>{team.goals.for.average.away}</td>
+								<td>{team.goals.for.average.total}</td>
+							</tr>
+							<tr>
+								<th>Total Goals Scored</th>
+								<td>{team.goals.for.total.home}</td>
+								<td>{team.goals.for.total.away}</td>
+								<td>{team.goals.for.total.total}</td>
+							</tr>
+							<tr>
+								<th>Average Goals Conceded</th>
+								<td>{team.goals.against.average.home}</td>
+								<td>{team.goals.against.average.away}</td>
+								<td>{team.goals.against.average.total}</td>
+							</tr>
+							<tr>
+								<th>Total Goals Conceded</th>
+								<td>{team.goals.against.total.home}</td>
+								<td>{team.goals.against.total.away}</td>
+								<td>{team.goals.against.total.total}</td>
+							</tr>
+							<tr>
 								<th>Most Goals Scored</th>
 								<td>{team.biggest!.goals!.for.home}</td>
 								<td>{team.biggest!.goals!.for.away}</td>
@@ -127,6 +151,27 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 								{Object.entries(team.cards.red).map(([key, value]: any) => (
 									<td key={key}>{value.total ?? "-"}</td>
 								))}
+							</tr>
+							<tr>
+								<th></th>
+							</tr>
+							<tr>
+								<th>Lineups</th>
+								{team.lineups.map((lineup: any, i: number) => (
+									<td>
+										{lineup.formation} in {lineup.played} games
+									</td>
+								))}
+							</tr>
+							<tr>
+								<th></th>
+								<th>Total</th>
+								<th>Scored</th>
+							</tr>
+							<tr>
+								<th>Penalties</th>
+								<td>{team.penalty.total}</td>
+								<td>{team.penalty.scored.total}</td>
 							</tr>
 						</tbody>
 					</table>
