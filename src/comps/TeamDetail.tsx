@@ -24,13 +24,11 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 				.id
 	);
 
-	console.log(team);
-
 	useEffect(() => {
-		if (teamStatus === "idle" && leagueId) {
+		if (leagueId) {
 			dispatch(fetchTeam({ leagueId, teamId }));
 		}
-	}, [dispatch, leagueId, teamId, teamStatus]);
+	}, [dispatch, leagueId, teamId]);
 
 	if (teamStatus === "loading") return <Loader />;
 	if (teamStatus === "failed") return <Error text={error} />;
