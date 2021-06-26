@@ -134,7 +134,7 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 								<td>{team.biggest!.streak!.draws}</td>
 								<td>{team.biggest!.streak!.loses}</td>
 							</tr>
-							<tr>
+							{/* <tr>
 								<th></th>
 								{Object.entries(team.cards.yellow).map(([key, value]) => (
 									<th key={key}>{key}`</th>
@@ -162,7 +162,7 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 										{lineup.formation} in {lineup.played} games
 									</td>
 								))}
-							</tr>
+							</tr> */}
 							<tr>
 								<th></th>
 								<th>Total</th>
