@@ -1,7 +1,7 @@
 import styles from "./styles/App.module.css";
 import ballImg from "./assets/ball.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
 
 function App() {
 	return (
