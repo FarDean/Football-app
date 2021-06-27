@@ -133,4 +133,5 @@
 	padding: 20px 0;
 	color: rgb(155, 155, 155);
 	width: 100%;
+	min-height: 50vh;
 }
