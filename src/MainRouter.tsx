@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
 import { Fixture } from "./comps/Fixture";
+import { Footer } from "./comps/Footer";
 import { League } from "./comps/League";
 import { LiveScores } from "./comps/LiveScores";
 import { TeamDetail } from "./comps/TeamDetail";
@@ -36,6 +37,7 @@ export const MainRouter = () => {
 					<TeamDetail />
 				</Route>
 			</Switch>
+			<Footer />
 		</Router>
 	);
 };
