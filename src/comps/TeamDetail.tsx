@@ -47,6 +47,7 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 							<Tab>Fixtures</Tab>
 							<Tab>Players</Tab>
 							<Tab>Transfers</Tab>
+							<Tab>Injuries</Tab>
 						</TabList>
 
 						<TabPanel>
@@ -194,6 +195,9 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 						</TabPanel>
 						<TabPanel>
 							<h3>Transfers</h3>
+						</TabPanel>
+						<TabPanel>
+							<h3>Injuries</h3>
 						</TabPanel>
 					</Tabs>
 				</Container>
