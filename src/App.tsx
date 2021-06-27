@@ -10,7 +10,7 @@ function App() {
 				<div className={styles.title}>
 					<div>
 						<div className={styles.ballImg}>
-							<img src={ballImg} alt="Ball" />
+							<img loading="lazy" src={ballImg} alt="Ball" />
 						</div>
 						<h1>Football App made By</h1>
 					</div>
