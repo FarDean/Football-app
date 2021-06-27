@@ -10,6 +10,7 @@ import { Container } from "./utils/Container";
 import styles from "./../styles/TeamDetail.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { TeamFixtures } from "./TeamFixtures";
 
 export const TeamDetail: React.FC = (): JSX.Element => {
 	const { leagueName, teamId } = useParams<{ leagueName: string; teamId: string }>();
@@ -44,6 +45,8 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 						<TabList>
 							<Tab>Statistics</Tab>
 							<Tab>Fixtures</Tab>
+							<Tab>Players</Tab>
+							<Tab>Transfers</Tab>
 						</TabList>
 
 						<TabPanel>
@@ -184,7 +187,13 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 							</table>
 						</TabPanel>
 						<TabPanel>
-							<h2>Fixtures</h2>
+							<TeamFixtures />
+						</TabPanel>
+						<TabPanel>
+							<h3>Players</h3>
+						</TabPanel>
+						<TabPanel>
+							<h3>Transfers</h3>
 						</TabPanel>
 					</Tabs>
 				</Container>
