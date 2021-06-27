@@ -14,10 +14,6 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 
 	const dispatch = useAppDispatch();
 
-	// main Selectors
-	const team = useAppSelector(state => state.team.team);
-	const teamStatus = useAppSelector(state => state.team.status);
-	const error = useAppSelector(state => state.team.error);
 	const leagueId = useAppSelector(
 		state =>
 			state.league.leagues.find(league => slugify(league.league.name) === leagueName)?.league
@@ -29,11 +25,15 @@ export const TeamDetail: React.FC = (): JSX.Element => {
 			dispatch(fetchTeam({ leagueId, teamId }));
 		}
 	}, [dispatch, leagueId, teamId]);
+	// main Selectors
+	const team = useAppSelector(state => state.team.team);
+	const teamStatus = useAppSelector(state => state.team.status);
+	const error = useAppSelector(state => state.team.error);
 
 	if (teamStatus === "loading") return <Loader />;
 	if (teamStatus === "failed") return <Error text={error} />;
 
-	if (teamStatus === "succeeded" && team)
+	if (teamStatus === "succeeded" && team.team)
 		return (
 			<>
 				<Hero icon={team.team.logo} text={team.team.name} />
