@@ -25,14 +25,16 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 	const standingStatus = useAppSelector(state => state.standing.status);
 	const error = useAppSelector(state => state.standing.error);
 
+	const leagues = useAppSelector(state => state.league.leagues);
+
 	const { leagueName } = useParams<{ leagueName: string }>();
 
 	useEffect(() => {
 		dispatch(fetchStanding(leagueId));
 	}, [dispatch, leagueId]);
 
-	if (standingStatus === "loading") return <Loader />;
-	if (standingStatus === "succeeded")
+	if (standingStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
+	if (standingStatus === "succeeded" && standing[0].league.standings[0])
 		return (
 			<table className={styles.table}>
 				<tbody>
