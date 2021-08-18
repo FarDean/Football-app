@@ -16,6 +16,7 @@ export const League: React.FC = (): JSX.Element => {
 		state.league.leagues.find(x => x.league.name === leagueName.replace(/-/g, " "))
 	);
 
+	const leagues = useAppSelector(state => state.league.leagues);
 	const leaguesStatus = useAppSelector(state => state.league.status);
 
 	const getClass = (linkName: string) => {
@@ -24,7 +25,7 @@ export const League: React.FC = (): JSX.Element => {
 			: `${styles.tab}`;
 	};
 
-	if (leaguesStatus === "loading") return <Loader />;
+	if (leaguesStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
 	if (leaguesStatus === "succeeded" && league)
 		return (
 			<>
