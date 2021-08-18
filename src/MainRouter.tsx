@@ -12,8 +12,9 @@ import { Wrapper } from "./comps/Wrapper";
 import { useAppSelector } from "./redux/hooks";
 export const MainRouter = () => {
 	const leaguesStatus = useAppSelector(state => state.league.status);
+	const leagues = useAppSelector(state => state.league.leagues);
 
-	if (leaguesStatus === "loading") return <Loader />;
+	if (leaguesStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
 	if (leaguesStatus === "failed") return <Error />;
 
 	return (
