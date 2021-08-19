@@ -31,11 +31,13 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 		dispatch(fetchLeagueStats(leagueId));
 	}, [dispatch, leagueId]);
 
+	console.log(leagueStats);
+
 	if (leagueStatsStatus === "loading") return <Loader />;
 
 	if (leagueStatsStatus === "failed") return <Error text={error} />;
 
-	if (leagueStatsStatus === "succeeded" && leagueStats)
+	if (leagueStatsStatus === "succeeded" && topScorers[0])
 		return (
 			<div className={styles.container}>
 				<div className={styles.stats}>

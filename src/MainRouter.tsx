@@ -13,6 +13,8 @@ import { useAppSelector } from "./redux/hooks";
 export const MainRouter = () => {
 	const leaguesStatus = useAppSelector(state => state.league.status);
 	const leagues = useAppSelector(state => state.league.leagues);
+	console.log(leagues.some(elem => elem === null));
+	console.log(leagues);
 
 	if (leaguesStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
 	if (leaguesStatus === "failed") return <Error />;

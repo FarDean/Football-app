@@ -7,17 +7,17 @@ import { Fixtures } from "./Fixtures";
 import { Error } from "./utils/Error";
 import { Loader } from "./utils/Loader";
 import { LeagueStats } from "./LeagueStats";
+import { useEffect } from "react";
 
 export const League: React.FC = (): JSX.Element => {
 	let { path, url } = useRouteMatch();
 	let { leagueName }: { leagueName: string } = useParams();
 
+	const leagues = useAppSelector(state => state.league.leagues);
+	const leaguesStatus = useAppSelector(state => state.league.status);
 	const league = useAppSelector(state =>
 		state.league.leagues.find(x => x.league.name === leagueName.replace(/-/g, " "))
 	);
-
-	const leagues = useAppSelector(state => state.league.leagues);
-	const leaguesStatus = useAppSelector(state => state.league.status);
 
 	const getClass = (linkName: string) => {
 		return window.location.href.includes(linkName)
@@ -25,8 +25,8 @@ export const League: React.FC = (): JSX.Element => {
 			: `${styles.tab}`;
 	};
 
-	if (leaguesStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
-	if (leaguesStatus === "succeeded" && league)
+	if (leaguesStatus === "loading" || !league) return <Loader />;
+	if (leaguesStatus === "succeeded")
 		return (
 			<>
 				<Hero text={league.league.name} icon={league.league.logo} />
