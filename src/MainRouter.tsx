@@ -17,7 +17,7 @@ export const MainRouter = () => {
 	console.log(leagues);
 
 	if (leaguesStatus === "loading" || leagues.some(elem => elem === null)) return <Loader />;
-	if (leaguesStatus === "failed") return <Error />;
+	if (leaguesStatus === "failed" || leagues[0] === undefined) return <Error />;
 
 	return (
 		<Router>
