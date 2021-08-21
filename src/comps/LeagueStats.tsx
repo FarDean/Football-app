@@ -37,80 +37,84 @@ export const LeagueStats: React.FC<Props> = ({ leagueId }): JSX.Element => {
 
 	if (leagueStatsStatus === "failed") return <Error text={error} />;
 
-	if (leagueStatsStatus === "succeeded" && topScorers[0])
+	if (leagueStatsStatus === "succeeded")
 		return (
 			<div className={styles.container}>
 				<div className={styles.stats}>
 					<h2 className={styles.title}>Top Scorers</h2>
-					{topScorers.map((player: any, i: number) => (
-						<div key={i} className={styles.wrapper}>
-							<div className={styles.detail}>
-								<div className={styles.player}>
-									<img src={player.player.photo} alt="" />
-									<p>{player.player.name}</p>
+					{topScorers[0] &&
+						topScorers.map((player: any, i: number) => (
+							<div key={i} className={styles.wrapper}>
+								<div className={styles.detail}>
+									<div className={styles.player}>
+										<img src={player.player.photo} alt="" />
+										<p>{player.player.name}</p>
+									</div>
+									<div>{player.statistics[0].goals.total}</div>
 								</div>
-								<div>{player.statistics[0].goals.total}</div>
+								<div className={styles.team}>
+									<img src={player.statistics[0].team.logo} alt="" />
+									<div>{player.statistics[0].team.name}</div>
+								</div>
 							</div>
-							<div className={styles.team}>
-								<img src={player.statistics[0].team.logo} alt="" />
-								<div>{player.statistics[0].team.name}</div>
-							</div>
-						</div>
-					))}
+						))}
 				</div>
 				<div className={styles.stats}>
 					<h2 className={styles.title}>Top Assists</h2>
-					{topAssists.map((player: any, i: number) => (
-						<div key={i} className={styles.wrapper}>
-							<div className={styles.detail}>
-								<div className={styles.player}>
-									<img src={player.player.photo} alt="" />
-									<p>{player.player.name}</p>
+					{topAssists[0] &&
+						topAssists.map((player: any, i: number) => (
+							<div key={i} className={styles.wrapper}>
+								<div className={styles.detail}>
+									<div className={styles.player}>
+										<img src={player.player.photo} alt="" />
+										<p>{player.player.name}</p>
+									</div>
+									<div>{player.statistics[0].goals.assists}</div>
 								</div>
-								<div>{player.statistics[0].goals.assists}</div>
+								<div className={styles.team}>
+									<img src={player.statistics[0].team.logo} alt="" />
+									<div>{player.statistics[0].team.name}</div>
+								</div>
 							</div>
-							<div className={styles.team}>
-								<img src={player.statistics[0].team.logo} alt="" />
-								<div>{player.statistics[0].team.name}</div>
-							</div>
-						</div>
-					))}
+						))}
 				</div>
 				<div className={styles.stats}>
 					<h2 className={styles.title}>Top Yellow Cards</h2>
-					{topYellowCards.map((player: any, i: number) => (
-						<div key={i} className={styles.wrapper}>
-							<div className={styles.detail}>
-								<div className={styles.player}>
-									<img src={player.player.photo} alt="" />
-									<p>{player.player.name}</p>
+					{topYellowCards[0] &&
+						topYellowCards.map((player: any, i: number) => (
+							<div key={i} className={styles.wrapper}>
+								<div className={styles.detail}>
+									<div className={styles.player}>
+										<img src={player.player.photo} alt="" />
+										<p>{player.player.name}</p>
+									</div>
+									<div>{player.statistics[0].cards.yellow}</div>
 								</div>
-								<div>{player.statistics[0].cards.yellow}</div>
+								<div className={styles.team}>
+									<img src={player.statistics[0].team.logo} alt="" />
+									<div>{player.statistics[0].team.name}</div>
+								</div>
 							</div>
-							<div className={styles.team}>
-								<img src={player.statistics[0].team.logo} alt="" />
-								<div>{player.statistics[0].team.name}</div>
-							</div>
-						</div>
-					))}
+						))}
 				</div>
 				<div className={styles.stats}>
 					<h2 className={styles.title}>Top Red Cards</h2>
-					{topRedCards.map((player: any, i: number) => (
-						<div key={i} className={styles.wrapper}>
-							<div className={styles.detail}>
-								<div className={styles.player}>
-									<img src={player.player.photo} alt="" />
-									<p>{player.player.name}</p>
+					{topRedCards[0] &&
+						topRedCards.map((player: any, i: number) => (
+							<div key={i} className={styles.wrapper}>
+								<div className={styles.detail}>
+									<div className={styles.player}>
+										<img src={player.player.photo} alt="" />
+										<p>{player.player.name}</p>
+									</div>
+									<div>{player.statistics[0].cards.red}</div>
 								</div>
-								<div>{player.statistics[0].cards.red}</div>
+								<div className={styles.team}>
+									<img src={player.statistics[0].team.logo} alt="" />
+									<div>{player.statistics[0].team.name}</div>
+								</div>
 							</div>
-							<div className={styles.team}>
-								<img src={player.statistics[0].team.logo} alt="" />
-								<div>{player.statistics[0].team.name}</div>
-							</div>
-						</div>
-					))}
+						))}
 				</div>
 			</div>
 		);
