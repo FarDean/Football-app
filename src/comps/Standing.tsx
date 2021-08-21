@@ -80,11 +80,13 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						<td key={"td8"}>{team.goalsDiff}</td>
 						<td key={"td9"}>{team.points}</td>
 						<td key={"td10"} className={styles.last5}>
-							{[...team.form].map((str, i) => (
-								<span key={i} className={styles.form}>
-									{icons[str]}
-								</span>
-							))}
+							{team.form &&
+								team.form.length === 1 &&
+								[...team.form].map((str, i) => (
+									<span key={i} className={styles.form}>
+										{icons[str]}
+									</span>
+								))}
 						</td>
 					</tr>
 				))}
