@@ -35,10 +35,9 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 		dispatch(fetchStanding(leagueId));
 	}, [dispatch, leagueId]);
 
-	if (standingStatus === "loading") return <Loader />;
+	if (standingStatus === "loading" || !standing[0]) return <Loader />;
 
-	if ((standingStatus === "succeeded" && !standing[0]) || standingStatus === "failed")
-		return <Error text={error} />;
+	if (standingStatus === "failed") return <Error text={error} />;
 
 	return (
 		<table className={styles.table}>
