@@ -10,7 +10,7 @@
 }
 
 .flexitem {
-	flex-basis: 45%;
+	flex-basis: 100%;
 	cursor: pointer;
 	border: 0.5px solid rgb(243, 243, 243);
 	border-radius: 10px;
@@ -124,4 +124,10 @@
 	padding: 20px 0;
 	color: rgb(155, 155, 155);
 	width: 100%;
+}
+
+@media (min-width: 900px) {
+	.flexitem {
+		flex-basis: 45%;
+	}
 }
