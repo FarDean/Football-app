@@ -6,11 +6,16 @@
 	border-collapse: collapse;
 }
 
+.table td {
+	text-align: center;
+}
+
 .head {
 	font-size: 1.2rem;
 	font-weight: 700;
 	color: rgb(75, 75, 75);
 	line-height: 2.2;
+	padding: 0 5em;
 }
 
 .tbrow {
