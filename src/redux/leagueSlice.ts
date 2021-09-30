@@ -59,10 +59,14 @@ export const leagueSlice = createSlice({
 			const premierLeague = action.payload.find((x: League) => x.league.id === 39);
 			const laLiga = action.payload.find((x: League) => x.league.id === 140);
 			const bundesLiga = action.payload.find((x: League) => x.league.id === 78);
+			const ucl = action.payload.find((x: League) => x.league.id === 2);
+			const uel = action.payload.find((x: League) => x.league.id === 3);
 			state.leagues.push(serieA);
 			state.leagues.push(premierLeague);
 			state.leagues.push(laLiga);
 			state.leagues.push(bundesLiga);
+			state.leagues.push(ucl);
+			state.leagues.push(uel);
 		});
 		builder.addCase(fetchLeagues.rejected, (state, action) => {
 			state.status = "failed";
