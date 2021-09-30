@@ -21,11 +21,11 @@ function App() {
 		getState();
 	}, []);
 
-	console.log(
-		state?.response.sort((a: any, b: any) => {
-			return a.league.id - b.league.id;
-		})
-	);
+	// console.log(
+	// 	state?.response.sort((a: any, b: any) => {
+	// 		return a.league.id - b.league.id;
+	// 	})
+	// );
 
 	return (
 		<div>
