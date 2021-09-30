@@ -31,15 +31,15 @@ export const liveScoresSlice = createSlice({
 	name: "livescore",
 	initialState,
 	reducers: {},
-	extraReducers: builer => {
-		builer.addCase(fetchLiveScores.pending, (state, action) => {
+	extraReducers: builder => {
+		builder.addCase(fetchLiveScores.pending, (state, action) => {
 			state.status = "loading";
 		});
-		builer.addCase(fetchLiveScores.fulfilled, (state, action) => {
+		builder.addCase(fetchLiveScores.fulfilled, (state, action) => {
 			state.status = "succeeded";
 			state.liveScores = action.payload;
 		});
-		builer.addCase(fetchLiveScores.rejected, (state, action) => {
+		builder.addCase(fetchLiveScores.rejected, (state, action) => {
 			state.status = "failed";
 			state.error = action.error.message;
 		});
