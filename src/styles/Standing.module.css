@@ -66,9 +66,6 @@
 }
 
 .last5 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	display: none;
 }
 
@@ -82,7 +79,7 @@
 		width: 80%;
 	}
 	.last5 {
-		display: block;
+		display: table-cell;
 	}
 }
 @media (min-width: 1255px) {
