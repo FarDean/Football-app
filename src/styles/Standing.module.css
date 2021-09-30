@@ -9,8 +9,16 @@
 
 .table td {
 	text-align: center;
-	padding-left: 3px;
-	padding-right: 3px;
+	width: 35px;
+	max-width: 35px;
+}
+.table td:first-child {
+	width: 250px;
+	max-width: 250px;
+}
+.table td:last-child {
+	width: 100px;
+	max-width: 100px;
 }
 
 .head {
@@ -60,6 +68,7 @@
 .last5 {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	display: none;
 }
 
@@ -69,6 +78,9 @@
 	}
 }
 @media (min-width: 955px) {
+	.table {
+		width: 80%;
+	}
 	.last5 {
 		display: block;
 	}
@@ -76,9 +88,6 @@
 @media (min-width: 1255px) {
 	.table {
 		width: 75%;
-	}
-	.last5 {
-		display: block;
 	}
 }
 @media (min-width: 1555px) {

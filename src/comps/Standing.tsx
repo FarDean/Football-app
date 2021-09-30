@@ -52,9 +52,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 					<td key={"GA"}>GA</td>
 					<td key={"GD"}>GD</td>
 					<td key={"Pts"}>Pts</td>
-					<td key={"Last 5"} className={styles.last5}>
-						Last 5
-					</td>
+					<td key={"Last 5"}>Last 5</td>
 				</tr>
 				{table.map((team: any, i: number) => (
 					<tr
@@ -77,7 +75,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						<td key={"td7"}>{team.all.goals.against}</td>
 						<td key={"td8"}>{team.goalsDiff}</td>
 						<td key={"td9"}>{team.points}</td>
-						<td key={"td10"} className={styles.last5}>
+						<td key={"td10"}>
 							{team.form &&
 								// team.form.length === 1 &&
 								[...team.form].map((str, i) => (
