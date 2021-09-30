@@ -13,9 +13,22 @@ const initialState: LiveScoresState = {
 	error: null,
 };
 
-// Thunk
+// Thunks
 export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", async () => {
 	const res = await fetch("https://v3.football.api-sports.io/fixtures?live=39-135-140-78-2-3", {
+		method: "GET",
+		headers: {
+			"x-rapidapi-host": process.env.REACT_APP_HOST!,
+			"x-rapidapi-key": process.env.REACT_APP_KEY!,
+		},
+	});
+	const data = await res.json();
+	return data.response;
+});
+
+export const fetchTodayMatches = createAsyncThunk("todayMatches/fetchTodayMatches", async () => {
+	const today = getToday();
+	const res = await fetch(`https://v3.football.api-sports.io/fixtures?date=${today}`, {
 		method: "GET",
 		headers: {
 			"x-rapidapi-host": process.env.REACT_APP_HOST!,
@@ -45,5 +58,14 @@ export const liveScoresSlice = createSlice({
 		});
 	},
 });
-
+function getToday() {
+	const today = new Date();
+	return (
+		("0000" + today.getFullYear().toString()).slice(-4) +
+		"-" +
+		("00" + today.getMonth().toString()).slice(-2) +
+		"-" +
+		("00" + today.getDate().toString()).slice(-2)
+	);
+}
 export default liveScoresSlice.reducer;
