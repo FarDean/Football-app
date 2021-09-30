@@ -39,7 +39,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 
 	if (standingStatus === "failed") return <Error text={error} />;
 
-	return (
+	return standing[0]?.league?.standings.map((table: any) => (
 		<table className={styles.table}>
 			<tbody>
 				<tr className={styles.head}>
@@ -56,8 +56,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						Last 5
 					</td>
 				</tr>
-
-				{standing[0]?.league?.standings[0].map((team: any, i: number) => (
+				{table.map((team: any, i: number) => (
 					<tr
 						// to={`/${leagueName}/team/${slugify(team.team.name)}`}
 						className={styles.tbrow}
@@ -80,7 +79,7 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						<td key={"td9"}>{team.points}</td>
 						<td key={"td10"} className={styles.last5}>
 							{team.form &&
-								team.form.length === 1 &&
+								// team.form.length === 1 &&
 								[...team.form].map((str, i) => (
 									<span key={i} className={styles.form}>
 										{icons[str]}
@@ -89,7 +88,40 @@ export const Statnding: React.FC<Props> = ({ leagueId }) => {
 						</td>
 					</tr>
 				))}
+
+				{/* {standing[0]?.league?.standings[0].map((team: any, i: number) => (
+					<tr
+						// to={`/${leagueName}/team/${slugify(team.team.name)}`}
+						className={styles.tbrow}
+						key={i}
+						role="link"
+						onClick={() => history.push(`/${leagueName}/teams/${team.team.id}`)}
+					>
+						<td key={"td1"} className={styles.flex}>
+							<span className={styles.span}>{team.rank}</span>
+							<img className={styles.img} src={team.team.logo} alt="" />{" "}
+							<span>{team.team.name}</span>
+						</td>
+						<td key={"td2"}>{team.all.played}</td>
+						<td key={"td3"}>{team.all.win}</td>
+						<td key={"td4"}>{team.all.draw}</td>
+						<td key={"td5"}>{team.all.lose}</td>
+						<td key={"td6"}>{team.all.goals.for}</td>
+						<td key={"td7"}>{team.all.goals.against}</td>
+						<td key={"td8"}>{team.goalsDiff}</td>
+						<td key={"td9"}>{team.points}</td>
+						<td key={"td10"} className={styles.last5}>
+							{team.form &&
+								// team.form.length === 1 &&
+								[...team.form].map((str, i) => (
+									<span key={i} className={styles.form}>
+										{icons[str]}
+									</span>
+								))}
+						</td>
+					</tr>
+				))} */}
 			</tbody>
 		</table>
-	);
+	));
 };
