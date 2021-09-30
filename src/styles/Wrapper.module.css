@@ -13,6 +13,10 @@
 	position: relative;
 }
 
+.navItem p {
+	cursor: pointer;
+}
+
 .dropdown {
 	position: absolute;
 	top: 4vh;
