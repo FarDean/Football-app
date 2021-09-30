@@ -15,7 +15,7 @@ const initialState: LiveScoresState = {
 
 // Thunk
 export const fetchLiveScores = createAsyncThunk("liveScores/fetchLiveScores", async () => {
-	const res = await fetch("https://v3.football.api-sports.io/fixtures?live=39-135-140-78", {
+	const res = await fetch("https://v3.football.api-sports.io/fixtures?live=39-135-140-78-2-3", {
 		method: "GET",
 		headers: {
 			"x-rapidapi-host": process.env.REACT_APP_HOST!,
